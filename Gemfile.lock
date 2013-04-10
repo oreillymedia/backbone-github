@@ -1,0 +1,21 @@
+GIT
+  remote: git://github.com/rtomayko/rocco.git
+  revision: 727c510d635ba3b6fcf18caf3b0f89e16ef7e8f3
+  specs:
+    rocco (0.8.2)
+      mustache
+      redcarpet (~> 1.17)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    mustache (0.99.4)
+    pygmentize (0.0.3)
+    redcarpet (1.17.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  pygmentize
+  rocco!
