@@ -7,9 +7,7 @@ the GitHub API using Cross Origin Resource Sharing.
 
 ## Usage
 
-See the inline documentation for usage details.
-
-https://github.com/runemadsen/backbone-github/blob/master/backbone-github.js
+See the [inline documentation](https://github.com/runemadsen/backbone-github/blob/master/backbone-github.js) for usage details.
 
 ## License
 
