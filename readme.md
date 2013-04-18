@@ -36,7 +36,7 @@ GitHub.authenticate("myuser", "mypassword", {
 })
 ```
 
-### Github.User
+### GitHub.User
 
 If using an OAuth token, you can get info on the current user through the `GitHub.currentUser` variable.
 
@@ -54,10 +54,9 @@ GitHub.User.fetch('myuser', {
 });
 ```
 
-You can fetch a users repositories via the `repos` callback. The method returns a `GitHub.Repos` collection.
+You can the fetch a users repositories via the `repos` callback. The method returns a `GitHub.Repos` collection.
 
 ```javascript
-var u = GitHub.currentUser;
 u.repos({
 	success: function(r) {
   	// r is now a loaded GitHub.Repos collection
@@ -68,10 +67,43 @@ u.repos({
 You can fetch a users organizations via the `organizations` callback. The method returns a `GitHub.Organizations` collection.
 
 ```javascript
-var u = GitHub.currentUser;
 u.organizations({
 	success: function(r) {
   	// r is now a loaded GitHub.Organizations collection
+	}
+});
+```
+
+### GitHub.Organization
+
+You cna fetch an organization by name via the `GitHub.Organization.fetch` callback. The second parameter is an options object that takes a `success` and `error` callback.
+
+```javascript
+GitHub.Organization.fetch('myuser', {
+	success: function(o){
+  	// o is now a loaded GitHub.Organization model
+  }
+});
+```
+
+You can then fetch an organizations' repositories via the `repos` callback. The method returns a `GitHub.Repos` collection.
+
+```javascript
+o.repos({
+	success: function(r) {
+  	// r is now a loaded GitHub.Repos collection
+	}
+});
+```
+
+### GitHub.Repo
+
+You cna fetch a by knowing its owner and name. The third parameter is an options object that takes a `success` and `error` callback.
+
+```javascript
+GitHub.Repo.fetch('myuser', 'myrepos', {
+	success: function(r) {
+  	// r is now a loaded GitHub.Repo model
 	}
 });
 ```
