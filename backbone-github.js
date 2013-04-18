@@ -69,28 +69,10 @@ GitHub.Relations = {
   }
 };
 
-// ## GitHub.User
-// 
-// The GitHub User model. For information about specific attributes
-// that are available on this model, see GitHub's [Users API](http://developer.github.com/v3/users/)
-// documentation.
 GitHub.User = GitHub.Model.extend({
-  
   urlRoot: 'https://api.github.com/users/',
-  
-  // ### user.repos(options)
-  //
-  // Fetch associated repositories for this user. Takes
-  // a `success` and `error` callback as potential options.
-  // Returns a `GitHub.Repos` collection.
   repos: GitHub.Relations.ownedRepos,
-  
-  // ### user.organizations(options)
-  //
-  // Fetch associated organizations for this user. Takes
-  // a `success` and `error` callback as potential options.
   organizations: GitHub.Relations.ownedOrgs
-
 }, 
 {
   fetch: function(name, options) {

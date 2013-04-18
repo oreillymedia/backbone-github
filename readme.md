@@ -65,6 +65,17 @@ u.repos({
 });
 ```
 
+You can fetch a users organizations via the `organizations` callback. The method returns a `GitHub.Organizations` collection.
+
+```javascript
+var u = GitHub.currentUser;
+u.organizations({
+	success: function(r) {
+  	// r is now a loaded GitHub.Organizations collection
+	}
+});
+```
+
 ## License
 
 This library was originally ported from Michal Bleigh's amazing `backbone-github` library. All credit goes to the original author.
