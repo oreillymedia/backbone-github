@@ -33,8 +33,36 @@ GitHub.authenticate("myuser", "mypassword", {
 	{
 		console.log(token.data);
 	}
-}
 })
+```
+
+### Github.User
+
+If using an OAuth token, you can get info on the current user through the `GitHub.currentUser` variable.
+
+```javascript
+GitHub.currentUser.fetch()
+```
+
+You can also retrieve info on a user directly from the `GitHub.User` object. The second parameter is an options object that takes a `success` and `error` callback.
+
+```javascript
+GitHub.User.fetch('myuser', {
+	success: function(u) {
+  	// u is now a loaded GitHub.User model instance
+	}
+});
+```
+
+You can fetch a users repositories via the `repos` callback. The method returns a `GitHub.Repos` collection.
+
+```javascript
+var u = GitHub.currentUser;
+u.repos({
+	success: function(r) {
+  	// r is now a loaded GitHub.Repos collection
+	}
+});
 ```
 
 ## License

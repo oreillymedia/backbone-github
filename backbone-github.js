@@ -27,15 +27,8 @@ GitHub.authenticate = function(username, password, options) {
   });
 };
 
-// ## GitHub.sync
-//
-// The GitHub sync method is simply a customized version of the
-// default Backbone sync mechanism with two improved properties:
-//
-// 1. It automatically sets an Accept header compatible with the
-//    GitHub v3 API.
-// 2. It sets the OAuth 2.0 Authorization header if `GitHub.token`
-//    exists.
+
+// Custom version of Backbone.sync that sets Accept header and passes token in every call
 GitHub.sync = function(method, model, options) {
   var extendedOptions;
   extendedOptions = _.extend({
@@ -100,14 +93,6 @@ GitHub.User = GitHub.Model.extend({
 
 }, 
 {
-  // ### GitHub.User.fetch(name, options)
-  //
-  // Retrieve a user by username. Takes `success` and
-  // `error` callbacks.
-  //
-  //     GitHub.User.fetch('mbleigh', {success: function(u){
-  //       console.log(u.toJSON());
-  //     }});
   fetch: function(name, options) {
     var user;
     user = new GitHub.User({
@@ -202,15 +187,6 @@ GitHub.Repos = GitHub.Collection.extend({
   model: GitHub.Repo
 });
 
-// ## GitHub.currentUser
-//
-// A `GitHub.User` corresponding to the authenticated user.
-// Note that you must set `GitHub.token` to a valid OAuth 2.0
-// token to be able to utilize the current user.
-//
-// The `currentUser` is not fetched by default, you must run
-// `GitHub.currentUser.fetch()` before it will be populated
-// with data.
 GitHub.currentUser = new GitHub.User();
 GitHub.currentUser.url = "https://api.github.com/user";
 GitHub.currentUser.urlRoot = null;
