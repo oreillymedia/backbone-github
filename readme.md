@@ -98,7 +98,7 @@ o.repos({
 
 ### GitHub.Repo
 
-You cna fetch a by knowing its owner and name. The third parameter is an options object that takes a `success` and `error` callback.
+You can fetch a by knowing its owner and name. The third parameter is an options object that takes a `success` and `error` callback.
 
 ```javascript
 GitHub.Repo.fetch('myuser', 'myrepos', {
