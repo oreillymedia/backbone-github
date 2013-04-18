@@ -1,39 +1,7 @@
-// Backbone GitHub is a library that connects to the [GitHub
-// API](http://developer.github.com) using Cross Origin Resource 
-// Sharing (CORS). That means that you can utilize this library 
-// to access the full GitHub API without any server-side code 
-// whatsoever.
-// 
-// ## Dependencies
-// 
-// Backbone GitHub depends on Backbone, so before you can use
-// this library you will need to have included Backbone, 
-// Underscore, and jQuery on the page.
 window.GitHub = {};
 
-// ## GitHub.token
-// 
-// If `GitHub.token` is set you will be able to make 
-// user-authenticated calls to the GitHub API.
 GitHub.token = null;
 
-// ## GitHub.authenticate(username, password, options)
-// 
-// Authenticate with GitHub via username and password. This 
-// method will automatically set `GitHub.token`, which allows
-// you to make authenticated calls to the GitHub API.
-// 
-// Note that this will authenticate the user with a generic
-// "GitHub API" application. In order to have an app-specific
-// token you need to use the redirect flow. Available options:
-// 
-// * **success:** a callback function that takes arguments
-//   `data`, `textStatus`, and `jqXHR` (standard jQuery
-//   success callback)
-// * **error:** a callback function that takes arguments
-//   `jqXHR`, `textStatus`, and `errorThrown`
-// * **scope:** provide comma-separated scopes. For example,
-//   `repo,user`
 GitHub.authenticate = function(username, password, options) {
   var postData;
   postData = {};

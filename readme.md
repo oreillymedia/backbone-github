@@ -7,7 +7,35 @@ the GitHub API using Cross Origin Resource Sharing.
 
 ## Usage
 
-See the [inline documentation](https://github.com/runemadsen/backbone-github/blob/master/backbone-github.js) for usage details.
+### Oauth
+
+If you already have an OAuth token, you can pass it to the library, and it will be used to make authenticated calls to the API.
+
+```javascript
+GitHub.token = "abcdefg"
+```
+
+If you don't have an OAuth token, you can use basic auth to retrieve a token, via the `GitHub.authenticate` method. Note that this will authenticate the user with a generic "GitHub API" application. In order to have an app-specific token you need to use the redirect flow, which is not available in this library.
+
+The third parameter takes is an `options` object with available options:
+
+* **success:** a callback function that takes arguments
+  `data`, `textStatus`, and `jqXHR` (standard jQuery
+  success callback)
+* **error:** a callback function that takes arguments
+  `jqXHR`, `textStatus`, and `errorThrown`
+* **scope:** provide comma-separated scopes. For example,
+  `repo,user`
+
+```javascript
+GitHub.authenticate("myuser", "mypassword", {
+	success : function(data)
+	{
+		console.log(token.data);
+	}
+}
+})
+```
 
 ## License
 
