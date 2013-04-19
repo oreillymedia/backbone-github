@@ -35,13 +35,17 @@ GitHub.authenticate("myuser", "mypassword", {
 })
 ```
 
-### GitHub.User
+### GitHub.currentUser
 
 If using an OAuth token, you can get info on the current user through the `GitHub.currentUser` variable.
 
 ```javascript
 GitHub.currentUser.fetch()
 ```
+
+This user is now a GitHub.User model, with all the methods listed below.
+
+### GitHub.User
 
 You can also retrieve info on a user directly from the `GitHub.User` object. The second parameter is an options object that takes a `success` and `error` callback.
 
