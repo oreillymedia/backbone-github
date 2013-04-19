@@ -1,9 +1,8 @@
 # Backbone GitHub
 
-**NOTE:** Under development, not released yet.
+Backbone GitHub is a 100% client-side Javascript library for accessing the GitHub API using Cross Origin Resource Sharing.
 
-Backbone GitHub is a 100% client-side Javascript library for accessing
-the GitHub API using Cross Origin Resource Sharing.
+The library is covered by a suite of Jasmine tests in the `/test` directory.
 
 ## Usage
 
