@@ -1,6 +1,8 @@
 window.GitHub = {};
-
 GitHub.token = null;
+
+/* Authenticate
+--------------------------------------------------------- */
 
 GitHub.authenticate = function(username, password, options) {
   var postData;
@@ -27,8 +29,9 @@ GitHub.authenticate = function(username, password, options) {
   });
 };
 
+/* Sync
+--------------------------------------------------------- */
 
-// Custom version of Backbone.sync that sets Accept header and passes token in every call
 GitHub.sync = function(method, model, options) {
   var extendedOptions;
   extendedOptions = _.extend({
@@ -41,6 +44,9 @@ GitHub.sync = function(method, model, options) {
   }, options);
   return Backbone.sync(method, model, extendedOptions);
 };
+
+/* Extend
+--------------------------------------------------------- */
 
 GitHub.Model = Backbone.Model.extend({
   sync: GitHub.sync
@@ -69,31 +75,37 @@ GitHub.Relations = {
   }
 };
 
+/* User
+--------------------------------------------------------- */
+
 GitHub.User = GitHub.Model.extend({
-  urlRoot: 'https://api.github.com/users/',
+  url : function() { return "https://api.github.com/users/" + this.get("login") },
   repos: GitHub.Relations.ownedRepos,
   organizations: GitHub.Relations.ownedOrgs
 }, 
 {
-  fetch: function(name, options) {
+  fetch: function(login, options) {
     var user;
     user = new GitHub.User({
-      id: name
+      login: login
     });
     user.fetch(options);
     return user;
   }
 });
 
+/* Organization
+--------------------------------------------------------- */
+
 GitHub.Organization = GitHub.Model.extend({
-  urlRoot: 'https://api.github.com/orgs/',
+  url : function() { return "https://api.github.com/orgs/" + this.get("login") },
   repos: GitHub.Relations.ownedRepos
 }, 
 {
-  fetch: function(name, options) {
+  fetch: function(login, options) {
     var org;
     org = new GitHub.Organization({
-      id: name
+      login: login
     });
     org.fetch(options);
     return org;
@@ -104,6 +116,9 @@ GitHub.Organizations = GitHub.Collection.extend({
   url: 'https://api.github.com/user/orgs',
   model: GitHub.Organization
 });
+
+/* Repo
+--------------------------------------------------------- */
 
 GitHub.Repo = GitHub.Model.extend({
   url: function() {
@@ -125,6 +140,9 @@ GitHub.Repos = GitHub.Collection.extend({
   url: 'https://api.github.com/user/repos',
   model: GitHub.Repo
 });
+
+/* Current User
+--------------------------------------------------------- */
 
 GitHub.currentUser = new GitHub.User();
 GitHub.currentUser.url = "https://api.github.com/user";
