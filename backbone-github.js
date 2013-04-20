@@ -131,14 +131,24 @@ GitHub.Repo = GitHub.Model.extend({
       return GitHub.url + "/repos/" + this.get("owner").login + "/" + this.get("name")
     else
       return GitHub.url + "/repos/" + this.get("full_name")
+  },
+
+  contents : function(ref, path, options)
+  {
+    options = _.extend({
+      url : this.url() + "/contents/" + path,
+      data : $.param({ref:ref})
+    }, options);
+
+    //Backbone.sync('read', false, {url : this.url() + "/contents/" + path, data : ''})
+    // until by backbone pull request is merged
+    Backbone.sync('read', new Backbone.Model(), options)
   }
 
   // GO THROUGH THESE AND FIGURE OUT HOW IT RELATES TO BACKBONE!!!
   // -------------------------------------------------------------
 
   // ---- HIGHER LEVER
-
-  // TODO: contents(branch, path, options)
 
   // TODO: commit(parent, tree, message, options)
 
