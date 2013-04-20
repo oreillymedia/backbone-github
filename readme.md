@@ -6,6 +6,10 @@ The library is covered by a suite of Jasmine tests in the `/test` directory.
 
 ## Usage
 
+### The options object
+
+Many of the methods in the library takes an `options` object that is passed directly to the fetch methods in Backbone. This means you can give it a `success` or `error` callback, along with other jQuery specific attributes, like `data`, etc.
+
 ### Oauth
 
 If you already have an OAuth token, you can pass it to the library, and it will be used to make authenticated calls to the API.
@@ -110,6 +114,42 @@ GitHub.Repo.fetch('myuser', 'myrepos', {
 	}
 });
 ```
+
+From a `GitHub.Repo` object, you can retrieve a selection of data. In the following example we assume that the variable `r` is a `GitHub.Repo` instance that has at least the necessary information to figure our the URL of the repo. This means that you don't need to fetch the entire repo info before using the methods explained below. Instead you can initialize a repo like this:
+
+```javascript
+var r = new GitHub.Repo({full_name:"runemadsen/myrepo"})
+```
+
+... or like this
+
+```javascript
+var r = new GitHub.Repo({owner:{login:"runemadsen"}, name:"myrepo"})
+```
+
+... or with a full URL
+
+```javascript
+var r = new GitHub.Repo({url:"https://api.github.com/repos/runemadsen/Hello-World"})
+```
+
+### GitHub.File and GitHub.Dir
+
+This method allows you to retrieve the contents of a file or folder from the repo, without first loading a ref, then a tree, and then the blob.
+
+The method takes the string name of a ref (commit/branch/tag), the path to a folder or file, and an options hash.
+
+```javascript
+r.contents("master", "docs/hellotxt", {
+	success : function(res)
+	{
+		// res is now a loaded GitHub.File model or a GitHub.Dir collection
+		// you can check the type by calling res.backboneClass
+	}
+})
+```
+
+The method will wither return a GitHub.File model, or a GitHub.Dir collection.
 
 ## License
 

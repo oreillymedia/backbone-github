@@ -1,4 +1,5 @@
 window.GitHub = {};
+window.GitHub.url = "https://api.github.com"
 GitHub.token = null;
 
 /* Authenticate
@@ -11,7 +12,7 @@ GitHub.authenticate = function(username, password, options) {
     postData.scope = options.scope;
   }
   return $.ajax({
-    url: "https://api.github.com/authorizations",
+    url: GitHub.url + "/authorizations",
     contentType: 'application/json',
     dataType: 'json',
     type: 'POST',
@@ -79,7 +80,7 @@ GitHub.Relations = {
 --------------------------------------------------------- */
 
 GitHub.User = GitHub.Model.extend({
-  url : function() { return "https://api.github.com/users/" + this.get("login") },
+  url : function() { return GitHub.url + "/users/" + this.get("login") },
   repos: GitHub.Relations.ownedRepos,
   organizations: GitHub.Relations.ownedOrgs
 }, 
@@ -98,7 +99,7 @@ GitHub.User = GitHub.Model.extend({
 --------------------------------------------------------- */
 
 GitHub.Organization = GitHub.Model.extend({
-  url : function() { return "https://api.github.com/orgs/" + this.get("login") },
+  url : function() { return GitHub.url + "/orgs/" + this.get("login") },
   repos: GitHub.Relations.ownedRepos
 }, 
 {
@@ -121,15 +122,65 @@ GitHub.Organizations = GitHub.Collection.extend({
 --------------------------------------------------------- */
 
 GitHub.Repo = GitHub.Model.extend({
-  url: function() {
-    return this.get('url') || ("https://api.github.com/repos/" + (this.get('path')));
+  
+  url: function()
+  {
+    if(this.get("url"))
+      return this.get("url")
+    else if(this.get("owner") && this.get("owner").login && this.get("name"))
+      return GitHub.url + "/repos/" + this.get("owner").login + "/" + this.get("name")
+    else
+      return GitHub.url + "/repos/" + this.get("full_name")
   }
+
+  // GO THROUGH THESE AND FIGURE OUT HOW IT RELATES TO BACKBONE!!!
+  // -------------------------------------------------------------
+
+  // ---- HIGHER LEVER
+
+  // TODO: contents(branch, path, options)
+
+  // TODO: commit(parent, tree, message, options)
+
+  // TODO: remove(branch, path, options)
+
+  // TODO: move(branch, path, newbranch, options)
+
+  // TODO: write(branch, path, content, message, options)
+
+  // ---- LOWER LEVER
+
+  // TODO: update_head(head, commit, options)
+  
+  // TODO: get_ref(ref, options)
+  
+  // TODO: create_ref
+
+  // TODO: delete_ref(ref, options)
+
+  // TODO: list_branches(options)
+
+  // TODO: get_blob(sha, options)
+
+  // TODO: get_sha(branch, path, options)
+
+  // TODO: get_tree(tree, options)
+
+  // TODO: post_blob(content, options)
+
+  // TODO: update_tree(base_tree, path, blob, options)
+
+  // TODO: post_tree(tree, options)
+
+  // TODO: fork(options)
+
+  // TODO: create_pull_request
 }, 
 {
   fetch: function(owner, name, options) {
     var repo;
     repo = new GitHub.Repo({
-      path: "" + owner + "/" + name
+      full_name: owner + "/" + name
     });
     repo.fetch(options);
     return repo;
@@ -137,7 +188,7 @@ GitHub.Repo = GitHub.Model.extend({
 });
 
 GitHub.Repos = GitHub.Collection.extend({
-  url: 'https://api.github.com/user/repos',
+  url: GitHub.url + '/user/repos',
   model: GitHub.Repo
 });
 
@@ -145,5 +196,5 @@ GitHub.Repos = GitHub.Collection.extend({
 --------------------------------------------------------- */
 
 GitHub.currentUser = new GitHub.User();
-GitHub.currentUser.url = "https://api.github.com/user";
+GitHub.currentUser.url = GitHub.url + "/user";
 GitHub.currentUser.urlRoot = null;
