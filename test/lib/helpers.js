@@ -1,3 +1,8 @@
+var to_s = function(o)
+{
+	return JSON.stringify(o);
+}
+
 var API = {
 
 	xhr : null,
@@ -23,13 +28,12 @@ var API = {
 
 	server_fake : function()
 	{
-
+		API.server = sinon.fakeServer.create();
 	},
 
 	server_restore : function()
 	{
-
+		API.server.restore();
 	}
-
 
 }

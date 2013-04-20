@@ -135,14 +135,25 @@ GitHub.Repo = GitHub.Model.extend({
 
   contents : function(ref, path, options)
   {
-    options = _.extend({
+    var sync_options = {
       url : this.url() + "/contents/" + path,
-      data : $.param({ref:ref})
-    }, options);
+      data : $.param({ref:ref}),
+      success : function(res) {
+
+        var model;
+        if(_.isArray(res))  model = new GitHub.Dir(res)
+        else                model = new GitHub.File(res)
+
+        if(options.success) options.success(model);
+      },
+      error : function(e1, e2, e3) {
+        if(options.error) options.error(e1, e2, e3);
+      }
+    }
 
     //Backbone.sync('read', false, {url : this.url() + "/contents/" + path, data : ''})
     // until by backbone pull request is merged
-    Backbone.sync('read', new Backbone.Model(), options)
+    Backbone.sync('read', new Backbone.Model(), sync_options)
   }
 
   // GO THROUGH THESE AND FIGURE OUT HOW IT RELATES TO BACKBONE!!!
@@ -200,6 +211,18 @@ GitHub.Repo = GitHub.Model.extend({
 GitHub.Repos = GitHub.Collection.extend({
   url: GitHub.url + '/user/repos',
   model: GitHub.Repo
+});
+
+/* File and Dir
+--------------------------------------------------------- */
+
+GitHub.File = GitHub.Model.extend({
+  backboneClass : "File"
+});
+
+GitHub.Dir = GitHub.Collection.extend({
+  model : GitHub.File,
+  backboneClass : "Dir"
 });
 
 /* Current User

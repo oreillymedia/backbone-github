@@ -1,17 +1,17 @@
 describe("GitHub", function() {
 
-	beforeEach(function() {
-		API.xhr_fake();
-	});
-
-	afterEach(function() {
-		API.xhr_restore();
-	});
-
   /* Current User
   ------------------------------------------------------------------- */
 
 	describe("currentUser", function() {
+
+    beforeEach(function() {
+      API.xhr_fake();
+    });
+
+    afterEach(function() {
+      API.xhr_restore();
+    });
 
   	it("should call correct URL in currentUser.fetch()", function()
 		{
@@ -37,6 +37,14 @@ describe("GitHub", function() {
   ------------------------------------------------------------------- */
 
 	describe("User", function() {
+
+    beforeEach(function() {
+      API.xhr_fake();
+    });
+
+    afterEach(function() {
+      API.xhr_restore();
+    });
 
   	it("should call correct URL in User.fetch()", function()
 		{
@@ -65,6 +73,14 @@ describe("GitHub", function() {
 
 	describe("Organization", function() {
 
+    beforeEach(function() {
+      API.xhr_fake();
+    });
+
+    afterEach(function() {
+      API.xhr_restore();
+    });
+
   	it("should call correct URL in Organization.fetch()", function()
 		{
     	GitHub.Organization.fetch('oreillymedia');
@@ -84,6 +100,14 @@ describe("GitHub", function() {
   ------------------------------------------------------------------- */
 
 	describe("Repo", function() {
+
+    beforeEach(function() {
+      API.xhr_fake();
+    });
+
+    afterEach(function() {
+      API.xhr_restore();
+    });
 
   	it("should call correct URL in Repo.fetch()", function()
 		{
@@ -111,8 +135,13 @@ describe("GitHub", function() {
       r.fetch();
       expect(API.xhr_last().url).toEqual("https://api.github.com/repos/runemadsen/Hello-World");
     });
+  
+	});
 
-    describe("contents()", function() {
+  /* GitHub.repo.contents()
+  ------------------------------------------------------------------- */
+
+  describe("GitHub.repo.contents()", function() {
 
       var r;
 
@@ -122,12 +151,27 @@ describe("GitHub", function() {
 
       it("should call correct URL in Repo.contents()", function()
       {
+        API.xhr_fake();
         r.contents("master", "docs/hello.txt")
         expect(API.xhr_last().url).toEqual("https://api.github.com/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master");
+        API.xhr_restore();
       });
 
       it("should return GitHub.File in Repo.contents()", function()
       {
+        API.server_fake();
+        API.server.respondWith("get", "https://api.github.com/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master", [200, {}, to_s(GitHubObjects.contents.show.file)]);
+        
+        var result;
+        r.contents("master", "docs/hello.txt", {
+          success : function(o)
+          {
+            result = o;
+          }
+        });
+        API.server.respond();
+
+        expect(result.backboneClass).toBe("File")
       });
 
       it("should return GitHub.Dir in Repo.contents()", function()
@@ -145,7 +189,5 @@ describe("GitHub", function() {
       });
 
     });
-  
-	});
 
 });
