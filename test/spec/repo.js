@@ -51,7 +51,7 @@ describe("Repo", function() {
 
 describe("GitHub.repo.contents()", function() {
 
-  var r;
+  /*var r;
 
   beforeEach(function() {
     r = Helpers.get_repo();
@@ -89,6 +89,6 @@ describe("GitHub.repo.contents()", function() {
   it("should preserve options attributes to add to ajax call", function()
   {
 
-  });
+  });*/
 
 });

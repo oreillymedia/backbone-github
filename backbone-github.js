@@ -188,6 +188,7 @@ GitHub.Repo = GitHub.Model.extend({
       return GitHub.url + "/repos/" + this.get("full_name")
   },
 
+  /*these should proably work on contents
   contents : function(ref, path, options)
   {
     var sync_options = {
@@ -208,7 +209,7 @@ GitHub.Repo = GitHub.Model.extend({
 
     // until my backbone pull request is merged we pass an empty model
     GitHub.sync('read', new Backbone.Model(), sync_options)
-  },
+  },*/
 
   // Git Data
   // -------------------------------------------------------------
