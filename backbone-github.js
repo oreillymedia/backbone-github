@@ -118,6 +118,61 @@ GitHub.Organizations = GitHub.Collection.extend({
   model: GitHub.Organization
 });
 
+/* Tree
+--------------------------------------------------------- */
+
+GitHub.Tree = GitHub.Model.extend({
+
+  backboneClass : "Tree",
+
+  initialize : function()
+  {
+    this.on("change", this.parse_collections, this);
+    this.blobs = new GitHub.Blobs();
+    this.trees = new GitHub.Trees();
+    this.parse_collections();
+  },
+
+  parse_collections: function()
+  {
+    this.blobs.reset()
+    this.trees.reset()
+
+    _.each(this.get("tree"), function(o) {
+      if(o.type == "blob")
+      {
+        this.blobs.add(new GitHub.Blob(o));
+      }
+      else if(o.type == "tree")
+      {
+        this.trees.add(new GitHub.Tree(o));
+      }
+    }, this);
+  },
+
+  url : function()
+  { 
+    return this.get("url") || this.get("repo").url() + "/git/trees/" + this.get("sha")
+  }
+});
+
+GitHub.Trees = GitHub.Collection.extend({
+  model : GitHub.Tree,
+  backboneClass : "Trees"
+});
+
+/* Blob
+--------------------------------------------------------- */
+
+GitHub.Blob = GitHub.Model.extend({
+  backboneClass : "Blob"
+});
+
+GitHub.Blobs = GitHub.Collection.extend({
+  model : GitHub.Blob,
+  backboneClass : "Blobs"
+});
+
 /* Repo
 --------------------------------------------------------- */
 
@@ -151,15 +206,22 @@ GitHub.Repo = GitHub.Model.extend({
       }
     }
 
-    //Backbone.sync('read', false, {url : this.url() + "/contents/" + path, data : ''})
-    // until by backbone pull request is merged
-    Backbone.sync('read', new Backbone.Model(), sync_options)
-  }
+    // until my backbone pull request is merged we pass an empty model
+    GitHub.sync('read', new Backbone.Model(), sync_options)
+  },
 
-  // GO THROUGH THESE AND FIGURE OUT HOW IT RELATES TO BACKBONE!!!
+  // Git Data
   // -------------------------------------------------------------
 
-  // ---- HIGHER LEVER
+  tree : function(sha, options)
+  {
+    var tree = new GitHub.Tree({sha:sha, repo:this});
+    tree.fetch(options)
+    return tree;
+  }
+  
+  // Git Methods
+  // -------------------------------------------------------------
 
   // TODO: commit(parent, tree, message, options)
 
@@ -168,34 +230,6 @@ GitHub.Repo = GitHub.Model.extend({
   // TODO: move(branch, path, newbranch, options)
 
   // TODO: write(branch, path, content, message, options)
-
-  // ---- LOWER LEVER
-
-  // TODO: update_head(head, commit, options)
-  
-  // TODO: get_ref(ref, options)
-  
-  // TODO: create_ref
-
-  // TODO: delete_ref(ref, options)
-
-  // TODO: list_branches(options)
-
-  // TODO: get_blob(sha, options)
-
-  // TODO: get_sha(branch, path, options)
-
-  // TODO: get_tree(tree, options)
-
-  // TODO: post_blob(content, options)
-
-  // TODO: update_tree(base_tree, path, blob, options)
-
-  // TODO: post_tree(tree, options)
-
-  // TODO: fork(options)
-
-  // TODO: create_pull_request
 }, 
 {
   fetch: function(owner, name, options) {
