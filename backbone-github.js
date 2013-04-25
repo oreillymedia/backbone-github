@@ -118,6 +118,26 @@ GitHub.Organizations = GitHub.Collection.extend({
   model: GitHub.Organization
 });
 
+/* Collaborator
+--------------------------------------------------------- */
+
+GitHub.Collaborator = GitHub.Model.extend({
+  backboneClass : "Collaborator"
+});
+
+GitHub.Collaborators = GitHub.Collection.extend({
+  
+  model : GitHub.Collaborator,
+  backboneClass : "Collaborators",
+
+  initialize : function(models, options)
+  {
+    this.repo = options.repo
+  },
+
+  url : function() { return this.repo.url() + "/collaborators" }
+});
+
 /* Tree
 --------------------------------------------------------- */
 
@@ -211,14 +231,21 @@ GitHub.Repo = GitHub.Model.extend({
     GitHub.sync('read', new Backbone.Model(), sync_options)
   },*/
 
+  collaborators : function(options)
+  {
+    var collaborators = new GitHub.Collaborators([], {repo:this})
+    collaborators.fetch(options)
+    return collaborators
+  },
+
   // Git Data
   // -------------------------------------------------------------
 
   tree : function(sha, options)
   {
-    var tree = new GitHub.Tree({sha:sha, repo:this});
+    var tree = new GitHub.Tree({sha:sha, repo:this})
     tree.fetch(options)
-    return tree;
+    return tree
   }
   
   // Git Methods

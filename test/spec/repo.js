@@ -47,6 +47,15 @@ describe("Repo", function() {
     expect(API.xhr_last().url).toEqual("https://api.github.com/repos/runemadsen/Hello-World/git/trees/master");
   })
 
+  it("should fetch collaborators", function() {
+    var collab;
+    var r = Helpers.get_repo();
+    r.collaborators({
+      success : function(c) { collab = c }
+    })
+    expect(API.xhr_last().url).toEqual("https://api.github.com/repos/runemadsen/Hello-World/collaborators");
+  })
+
 });
 
 describe("GitHub.repo.contents()", function() {
