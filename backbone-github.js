@@ -138,6 +138,26 @@ GitHub.Collaborators = GitHub.Collection.extend({
   url : function() { return this.repo.url() + "/collaborators" }
 });
 
+/* Branch
+--------------------------------------------------------- */
+
+GitHub.Branch = GitHub.Model.extend({
+  backboneClass : "Branch"
+});
+
+GitHub.Branches = GitHub.Collection.extend({
+  
+  model : GitHub.Collaborator,
+  backboneClass : "Branches",
+
+  initialize : function(models, options)
+  {
+    this.repo = options.repo
+  },
+
+  url : function() { return this.repo.url() + "/branches" }
+});
+
 /* Tree
 --------------------------------------------------------- */
 
@@ -236,6 +256,13 @@ GitHub.Repo = GitHub.Model.extend({
     var collaborators = new GitHub.Collaborators([], {repo:this})
     collaborators.fetch(options)
     return collaborators
+  },
+
+  branches : function(options)
+  {
+    var branches = new GitHub.Branches([], {repo:this})
+    branches.fetch(options)
+    return branches
   },
 
   // Git Data

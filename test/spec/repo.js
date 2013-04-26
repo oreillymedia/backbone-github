@@ -56,6 +56,15 @@ describe("Repo", function() {
     expect(API.xhr_last().url).toEqual("https://api.github.com/repos/runemadsen/Hello-World/collaborators");
   })
 
+  it("should fetch branches", function() {
+    var branches;
+    var r = Helpers.get_repo();
+    r.branches({
+      success : function(b) { branches = b }
+    })
+    expect(API.xhr_last().url).toEqual("https://api.github.com/repos/runemadsen/Hello-World/branches");
+  })
+
 });
 
 describe("GitHub.repo.contents()", function() {
