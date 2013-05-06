@@ -218,6 +218,8 @@ GitHub.Blobs = GitHub.Collection.extend({
 
 GitHub.Repo = GitHub.Model.extend({
   
+  backboneClass : "Repo",
+
   url: function()
   {
     if(this.get("url"))

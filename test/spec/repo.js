@@ -11,6 +11,12 @@ describe("Repo", function() {
     API.xhr_restore();
   });
 
+  it("should have backboneClass", function()
+  {
+    var r = new GitHub.Repo({full_name:"runemadsen/Hello-World"})
+    expect(r.backboneClass).toEqual("Repo");
+  });
+
 	it("should call correct URL in Repo.fetch()", function()
 	{
   	GitHub.Repo.fetch('runemadsen', 'Hello-World');
