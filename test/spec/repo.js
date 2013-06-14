@@ -128,4 +128,17 @@ describe("GitHub.repo.contents()", function() {
     API.server_restore();
   });
 
+  it("should return raw content parsed from Base64", function()
+  {
+    API.server_fake();
+    API.server.respondWith("get", "https://api.github.com/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master", [200, {}, to_s(GitHubObjects.contents.show.file)]);
+    var result;
+    r.contents("master", "docs/hello.txt", {
+      success : function(o) { result = o; }
+    });
+    API.server.respond();
+    expect(result.raw()).toBe("Hello");
+    API.server_restore();
+  });
+
 });

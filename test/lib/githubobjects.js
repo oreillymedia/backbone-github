@@ -239,7 +239,7 @@ var GitHubObjects = {
         "size": 5362,
         "name": "README.md",
         "path": "README.md",
-        "content": "encoded content ...",
+        "content": "SGVsbG8=", // Hello
         "sha": "3d21ec53a331a6f037a91c368710b99387d012c1",
         "url": "https://api.github.com/repos/pengwynn/octokit/contents/README.md",
         "git_url": "https://api.github.com/repos/pengwynn/octokit/git/blobs/3d21ec53a331a6f037a91c368710b99387d012c1",
