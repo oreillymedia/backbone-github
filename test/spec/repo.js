@@ -75,7 +75,7 @@ describe("Repo", function() {
 
 describe("GitHub.repo.contents()", function() {
 
-  /*var r;
+  var r;
 
   beforeEach(function() {
     r = Helpers.get_repo();
@@ -89,7 +89,7 @@ describe("GitHub.repo.contents()", function() {
     API.xhr_restore();
   });
 
-  it("should return GitHub.File in Repo.contents()", function()
+  it("should return GitHub.Content in Repo.contents()", function()
   {
     API.server_fake();
     API.server.respondWith("get", "https://api.github.com/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master", [200, {}, to_s(GitHubObjects.contents.show.file)]);
@@ -98,21 +98,34 @@ describe("GitHub.repo.contents()", function() {
       success : function(o) { result = o; }
     });
     API.server.respond();
-    expect(result.backboneClass).toBe("File")
+    expect(result.backboneClass).toBe("Content");
+    API.server_restore();
   });
 
   it("should return GitHub.Dir in Repo.contents()", function()
   {
+    API.server_fake();
+    API.server.respondWith("get", "https://api.github.com/repos/runemadsen/Hello-World/contents/docs?ref=master", [200, {}, to_s(GitHubObjects.contents.show.dir)]);
+    var result;
+    r.contents("master", "docs", {
+      success : function(o) { result = o; }
+    });
+    API.server.respond();
+    expect(result.backboneClass).toBe("Contents");
+    API.server_restore();
   });
 
   it("should call options success callback on success", function()
   {
-
+    var options = { success : function() {} };
+    spyOn(options, "success");
+    API.server_fake();
+    API.server.respondWith("get", "https://api.github.com/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master", [200, {}, to_s(GitHubObjects.contents.show.file)]);
+    var result;
+    r.contents("master", "docs/hello.txt", options);
+    API.server.respond();
+    expect(options.success).toHaveBeenCalled();
+    API.server_restore();
   });
-
-  it("should preserve options attributes to add to ajax call", function()
-  {
-
-  });*/
 
 });
