@@ -364,7 +364,22 @@ GitHub.Content = GitHub.Model.extend({
       return GitHub.Base64.decode(this.get("content"));
     else
       throw new Error('No Base64 encoded content found in: ' + this.get("type"));
+  },
+  cook: function(content)
+  {
+    if(this.get("type") == "file" && this.get("content"))
+      this.set('content',GitHub.Base64.encode(content))
+
+    else
+      throw new Error('No Base64 encoded content found in: ' + this.get("type"));
+  },
+  url: function() 
+  {
+    repo = this.get('repo');
+    url = repo.url()+'/contents/'+ this.get('path')+'?ref='+this.get('ref');
+    return url;
   }
+
 
 });
 
@@ -392,12 +407,17 @@ GitHub.Repo = GitHub.Model.extend({
 
   contents : function(ref, path, options)
   {
+    var t=this;
     var sync_options = {
       url : this.url() + "/contents/" + path,
       data : $.param({ref:ref}),
       success : function(res)
       {
+        res.repo = t;
+        res.ref = ref
+        res.id = res.sha
         var model = _.isArray(res) ? new GitHub.Contents(res) : new GitHub.Content(res);
+
         if(options.success) options.success(model);
       },
       error : function(e1, e2, e3)
@@ -408,6 +428,19 @@ GitHub.Repo = GitHub.Model.extend({
 
     // Backbone.sync needs an empty model to work
     GitHub.sync('read', new Backbone.Model(), sync_options)
+  },
+
+  create_file : function(ref, path, file_content, options)
+  {
+    var newFile = new GitHub.Content({
+      ref: ref,
+      repo : this,
+      content: GitHub.Base64.encode(file_content),
+      path: path
+    });
+
+    newFile.save();
+    return newFile;
   },
 
   collaborators : function(options)

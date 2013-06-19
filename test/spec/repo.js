@@ -89,6 +89,46 @@ describe("GitHub.repo.contents()", function() {
     API.xhr_restore();
   });
 
+  it("should POST to the URL in the actual repo on github", function()
+  {
+    API.xhr_fake();
+    file_content = "Hello World!!!"
+    r.create_file('master', "docs/hello.txt", file_content)
+    expect(API.xhr_last().url).toEqual("https://api.github.com/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master");
+    expect(API.xhr_last().method).toEqual("POST");
+    content = JSON.parse(API.xhr_last().requestBody).content;
+    expect(content).toEqual(GitHub.Base64.encode(file_content));
+
+    API.xhr_restore();
+  });
+
+  it("should PUT to the URL in the actual repo on github", function()
+  {
+    API.server_fake();
+    var result;
+    API.server.respondWith("get", "https://api.github.com/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master", [200, {}, to_s(GitHubObjects.contents.show.file)]);
+    r.contents("master", "docs/hello.txt", {
+        success: function(o){ result = o;},
+        error: function(e){console.log(e);}
+    });
+    API.server.respond();
+    file_content = "bye bye"
+
+    API.server_restore();
+    API.xhr_fake();
+    result.cook(file_content); //need to base64 
+    result.save();
+
+    expect(API.xhr_last().url).toEqual("https://api.github.com/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master");
+    expect(API.xhr_last().method).toEqual("PUT");
+    content = JSON.parse(API.xhr_last().requestBody).content;
+    expect(content).toEqual(GitHub.Base64.encode(file_content));
+
+
+    API.xhr_restore();
+    
+  });
+
   it("should return GitHub.Content in Repo.contents()", function()
   {
     API.server_fake();
