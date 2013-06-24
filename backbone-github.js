@@ -439,7 +439,8 @@ GitHub.Repo = GitHub.Model.extend({
       path: path,
       message: message
     });
-
+    console.log(newFile);
+    newFile.set('id', newFile.cid); // set the id to the cid, to force PUT instead of POST, 'cause that's the way github likes it
     newFile.save();
     return newFile;
   },
