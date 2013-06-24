@@ -89,14 +89,16 @@ describe("GitHub.repo.contents()", function() {
     API.xhr_restore();
   });
 
-  it("should POST to the URL in the actual repo on github", function()
+  it("should POST to the URL in the actual repo on github, with correct contents and commit message ", function()
   {
     API.xhr_fake();
-    file_content = "Hello World!!!"
-    r.create_file('master', "docs/hello.txt", file_content)
+    file_content = "Hello World!!!";
+    commit_message = 'added file.txt';
+    r.create_file('master', "docs/hello.txt", file_content, commit_message);
     expect(API.xhr_last().url).toEqual("https://api.github.com/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master");
     expect(API.xhr_last().method).toEqual("POST");
     content = JSON.parse(API.xhr_last().requestBody).content;
+    expect(JSON.parse(API.xhr_last().requestBody).message).toEqual(commit_message);
     expect(content).toEqual(GitHub.Base64.encode(file_content));
 
     API.xhr_restore();

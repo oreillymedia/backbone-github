@@ -430,13 +430,14 @@ GitHub.Repo = GitHub.Model.extend({
     GitHub.sync('read', new Backbone.Model(), sync_options)
   },
 
-  create_file : function(ref, path, file_content, options)
+  create_file : function(ref, path, file_content, message, options)
   {
     var newFile = new GitHub.Content({
       ref: ref,
       repo : this,
       content: GitHub.Base64.encode(file_content),
-      path: path
+      path: path,
+      message: message
     });
 
     newFile.save();
