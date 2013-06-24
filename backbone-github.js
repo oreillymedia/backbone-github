@@ -432,14 +432,21 @@ GitHub.Repo = GitHub.Model.extend({
 
   create_file : function(ref, path, file_content, message, options)
   {
+    if (!options)var options = {}
+      var options = {};
+
+    if(options.encode === false)
+      var content = file_content;
+    else
+      var content = GitHub.Base64.encode(file_content);
+
     var newFile = new GitHub.Content({
       ref: ref,
       repo : this,
-      content: GitHub.Base64.encode(file_content),
+      content: content,
       path: path,
       message: message
     });
-    console.log(newFile);
     newFile.set('id', newFile.cid); // set the id to the cid, to force PUT instead of POST, 'cause that's the way github likes it
     newFile.save();
     return newFile;
