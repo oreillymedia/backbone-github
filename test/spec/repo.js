@@ -95,7 +95,7 @@ describe("GitHub.repo.contents()", function() {
     file_content = "Hello World!!!"
     r.create_file('master', "docs/hello.txt", file_content)
     expect(API.xhr_last().url).toEqual("https://api.github.com/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master");
-    expect(API.xhr_last().method).toEqual("POST");
+    expect(API.xhr_last().method).toEqual("PUT");
     content = JSON.parse(API.xhr_last().requestBody).content;
     expect(content).toEqual(GitHub.Base64.encode(file_content));
   });
