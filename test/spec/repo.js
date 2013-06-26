@@ -89,7 +89,7 @@ describe("GitHub.repo.contents()", function() {
     API.xhr_restore();
   });
 
-  it("should POST to the URL in the actual repo on github", function()
+  it("should call correct URL in Repo.create_file()", function()
   {
     API.xhr_fake();
     file_content = "Hello World!!!"
