@@ -5,7 +5,7 @@ describe("Tree", function() {
 
 	it("should parse data into collections on initialize", function()
 	{
-  	var tree = new GitHub.Tree(GitHubObjects.trees.show)
+  	var tree = new GitHub.Tree(GHResponses.trees.show)
     expect(tree.trees.length).toBe(1)
     expect(tree.blobs.length).toBe(2)
 	});
@@ -19,27 +19,24 @@ describe("Tree", function() {
 
   it("should parse data into collections on fetch", function()
   {
-    API.server_fake();
-    API.server.respondWith("get", "https://api.github.com/repos/runemadsen/Hello-World/git/trees/master", [200, {}, to_s(GitHubObjects.trees.show)]);
-
+    GHAPI.fake();
+    GHAPI.fakeRequest("get", GHAPI.url("/repos/runemadsen/Hello-World/git/trees/master"), GHResponses.trees.show, 200);
     var tree = new GitHub.Tree({sha:"master", repo:Helpers.get_repo()});
     tree.fetch();
-
-    API.server.respond();
-
+    GHAPI.respond();
     expect(tree.trees.length).toBe(1)
     expect(tree.blobs.length).toBe(2)
-
-    API.server_restore();
+    GHAPI.unfake();
   });
 
   it("fetch should work on child trees because they have a url", function() {
-    API.xhr_fake();
-    var tree = new GitHub.Tree(GitHubObjects.trees.show)
-    var sub_tree = tree.trees.first()
-    sub_tree.fetch()
-    expect(API.xhr_last().url).toEqual(GitHubObjects.trees.show.tree[1].url);
-    API.xhr_restore();
+    GHAPI.fake();
+    var tree = new GitHub.Tree(GHResponses.trees.show);
+    var sub_tree = tree.trees.first();
+    sub_tree.fetch();
+    GHAPI.respond();
+    expect(GHAPI.lastRequest().url).toEqual(GHResponses.trees.show.tree[1].url);
+    GHAPI.unfake();
   });
 
 });
