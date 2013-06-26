@@ -185,6 +185,21 @@ describe('Github.repo.create_file', function(){
   });
 
 
+  it("should modify the model based on the content returned by the api", function()
+  {
+    API.server_fake();
+    API.server.respondWith("put", "https://api.github.com/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master", [201, {}, to_s(GitHubObjects.contents.create)]);
+    var options = {success: function(){} };
+    // spyOn(options, 'success');
+    file_content = "Hello World!!!";
+    commit_message = 'added hello.txt';
+    newFile = r.create_file('master', "docs/hello.txt", file_content, commit_message, options);
+    console.log(newFile);
+    API.server.respond();
+    expect(newFile.get('sha')).toEqual(GitHubObjects.contents.create.content.sha);
+    API.server_restore();
+  });
+
     it("should call error cb() on create_file", function()
   {
     API.server_fake();
@@ -213,7 +228,7 @@ describe('Github.repo.create_file', function(){
 
     API.server_restore();
     API.xhr_fake();
-    result.cook(file_content); //need to base64 
+    result.cook(file_content); //need to base64
     result.save();
 
     expect(API.xhr_last().url).toEqual("https://api.github.com/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master");
@@ -221,7 +236,7 @@ describe('Github.repo.create_file', function(){
     content = JSON.parse(API.xhr_last().requestBody).content;
     expect(content).toEqual(GitHub.Base64.encode(file_content));
     API.xhr_restore();
-    
+
   });
 
 });
