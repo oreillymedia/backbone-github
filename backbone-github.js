@@ -365,7 +365,7 @@ GitHub.Content = GitHub.Model.extend({
 
   parse_response: function()
   {
-    if(this.get('content'))
+    if(_.isObject(this.get('content')))
       this.set("sha", this.get('content').sha);
   },
 
