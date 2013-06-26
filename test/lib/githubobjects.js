@@ -1,6 +1,6 @@
 var GitHubObjects = {
   users : {
-    show : { 
+    show : {
       "login": "runemadsen",
       "id": 1,
       "avatar_url": "https://github.com/images/error/octocat_happy.gif",
@@ -52,7 +52,7 @@ var GitHubObjects = {
   },
   repos : {
     index : [
-      { 
+      {
         "id": 1296269,
         "owner": { "login": "runemadsen",
         "id": 1,
@@ -84,7 +84,7 @@ var GitHubObjects = {
         "created_at": "2011-01-26T19:01:12Z",
         "updated_at": "2011-01-26T19:14:43Z"
       },
-      { 
+      {
         "id": 1296270,
         "owner": { "login": "runemadsen",
         "id": 1,
@@ -229,9 +229,55 @@ var GitHubObjects = {
       "has_issues": true,
       "has_wiki": true,
       "has_downloads": true
-    } 
+    }
   },
   contents : {
+    create:
+      {
+        "content": {
+          "name": "d.png",
+          "path": "d.png",
+          "sha": "b785435b6d58b3d17a8e66b399e5dcf60243eefa",
+          "size": 7166,
+          "url": "https://api.github.com/repos/zischwartz/atlas-book-sample/contents/d.png?ref=master",
+          "html_url": "https://github.com/zischwartz/atlas-book-sample/blob/master/d.png",
+          "git_url": "https://api.github.com/repos/zischwartz/atlas-book-sample/git/blobs/b785435b6d58b3d17a8e66b399e5dcf60243eefa",
+          "type": "file",
+          "_links": {
+            "self": "https://api.github.com/repos/zischwartz/atlas-book-sample/contents/d.png?ref=master",
+            "git": "https://api.github.com/repos/zischwartz/atlas-book-sample/git/blobs/b785435b6d58b3d17a8e66b399e5dcf60243eefa",
+            "html": "https://github.com/zischwartz/atlas-book-sample/blob/master/d.png"
+          }
+        },
+        "commit": {
+          "sha": "c8423de54db8ededf9dc6a1bb62739640b2da50b",
+          "url": "https://api.github.com/repos/zischwartz/atlas-book-sample/git/commits/c8423de54db8ededf9dc6a1bb62739640b2da50b",
+          "html_url": "https://github.com/zischwartz/atlas-book-sample/commits/c8423de54db8ededf9dc6a1bb62739640b2da50b",
+          "author": {
+            "name": "zischwartz",
+            "email": "zischwartz@gmail.com",
+            "date": "2013-06-26T19:51:54Z"
+          },
+          "committer": {
+            "name": "zischwartz",
+            "email": "zischwartz@gmail.com",
+            "date": "2013-06-26T19:51:54Z"
+          },
+          "tree": {
+            "sha": "3cfa5aeda66cdc08e5dde3083697383ba4b2976a",
+            "url": "https://api.github.com/repos/zischwartz/atlas-book-sample/git/trees/3cfa5aeda66cdc08e5dde3083697383ba4b2976a"
+          },
+          "message": "Added d.png",
+          "parents": [
+            {
+              "sha": "6d7792dfa19e7afbcaf4abafd4735e6c93aa25ff",
+              "url": "https://api.github.com/repos/zischwartz/atlas-book-sample/git/commits/6d7792dfa19e7afbcaf4abafd4735e6c93aa25ff",
+              "html_url": "https://github.com/zischwartz/atlas-book-sample/commits/6d7792dfa19e7afbcaf4abafd4735e6c93aa25ff"
+            }
+          ]
+        }
+      },
+
     show : {
       file: {
         "type": "file",

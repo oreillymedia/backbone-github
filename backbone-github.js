@@ -3,11 +3,11 @@ window.GitHub.url = "https://api.github.com"
 GitHub.token = null;
 
 /* Base64
- * Credit: http://www.webtoolkit.info/javascript-base64.html 
+ * Credit: http://www.webtoolkit.info/javascript-base64.html
 ------------------------------------------------------------ */
 
 GitHub.Base64 = {
- 
+
   // private property
   _keyStr : "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
 
@@ -137,7 +137,7 @@ GitHub.Base64 = {
       }
 
       return utftext;
-  }   
+  }
 
 };
 
@@ -222,7 +222,7 @@ GitHub.User = GitHub.Model.extend({
   url : function() { return GitHub.url + "/users/" + this.get("login") },
   repos: GitHub.Relations.ownedRepos,
   organizations: GitHub.Relations.ownedOrgs
-}, 
+},
 {
   fetch: function(login, options) {
     var user;
@@ -240,7 +240,7 @@ GitHub.User = GitHub.Model.extend({
 GitHub.Organization = GitHub.Model.extend({
   url : function() { return GitHub.url + "/orgs/" + this.get("login") },
   repos: GitHub.Relations.ownedRepos
-}, 
+},
 {
   fetch: function(login, options) {
     var org;
@@ -265,7 +265,7 @@ GitHub.Collaborator = GitHub.Model.extend({
 });
 
 GitHub.Collaborators = GitHub.Collection.extend({
-  
+
   model : GitHub.Collaborator,
   backboneClass : "Collaborators",
 
@@ -285,7 +285,7 @@ GitHub.Branch = GitHub.Model.extend({
 });
 
 GitHub.Branches = GitHub.Collection.extend({
-  
+
   model : GitHub.Collaborator,
   backboneClass : "Branches",
 
@@ -330,7 +330,7 @@ GitHub.Tree = GitHub.Model.extend({
   },
 
   url : function()
-  { 
+  {
     return this.get("url") || this.get("repo").url() + "/git/trees/" + this.get("sha")
   }
 });
@@ -358,6 +358,16 @@ GitHub.Blobs = GitHub.Collection.extend({
 GitHub.Content = GitHub.Model.extend({
   backboneClass : "Content",
 
+  initialize: function()
+  {
+    this.on("change", this.parse_response, this);
+  },
+
+  parse_response: function()
+  {
+    this.set("sha", this.get('content').sha);
+  },
+
   raw : function()
   {
     if(this.get("type") == "file" && this.get("content"))
@@ -373,7 +383,7 @@ GitHub.Content = GitHub.Model.extend({
     else
       throw new Error('No Base64 encoded content found in: ' + this.get("type"));
   },
-  url: function() 
+  url: function()
   {
     repo = this.get('repo');
     url = repo.url()+'/contents/'+ this.get('path')+'?ref='+this.get('ref');
@@ -392,7 +402,7 @@ GitHub.Contents = GitHub.Collection.extend({
 --------------------------------------------------------- */
 
 GitHub.Repo = GitHub.Model.extend({
-  
+
   backboneClass : "Repo",
 
   url: function()
@@ -430,17 +440,44 @@ GitHub.Repo = GitHub.Model.extend({
     GitHub.sync('read', new Backbone.Model(), sync_options)
   },
 
-  create_file : function(ref, path, file_content, options)
+  create_file : function(ref, path, file_content, message, options)
   {
+    if (!options){
+      var options = {};
+    }
+
+    if(options.encode === false)
+      var content = file_content;
+    else
+      var content = GitHub.Base64.encode(file_content);
+
     var newFile = new GitHub.Content({
       ref: ref,
       repo : this,
-      content: GitHub.Base64.encode(file_content),
-      path: path
+      content: content,
+      path: path,
+      message: message
     });
-
-    newFile.save();
+    newFile.set('id', newFile.cid); // set the id to the cid, to force PUT instead of POST, 'cause that's the way github likes it
+    newFile.save(null, options);
     return newFile;
+  },
+
+
+  update_file : function(ref, path, file_content, message, model, options)
+  {
+    if (!options){
+      var options = {};
+    }
+
+    if(options.encode === false)
+      var content = file_content;
+    else
+      var content = GitHub.Base64.encode(file_content);
+
+    data = {ref:ref, repo:this, content: content, path: path, sha:model.get('sha'), message: message, id: model.cid}
+    model.save(data, options);
+    return model;
   },
 
   collaborators : function(options)
@@ -466,7 +503,7 @@ GitHub.Repo = GitHub.Model.extend({
     tree.fetch(options)
     return tree
   }
-}, 
+},
 {
   fetch: function(owner, name, options) {
     var repo;
