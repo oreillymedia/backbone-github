@@ -154,16 +154,17 @@ describe('Github.repo.create_file', function(){
     file_content = "Hello World!!!";
     commit_message = 'added file.txt';
     r.create_file('master', "subfolder/SUBME.md", file_content, commit_message);
-    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/basic-sample/contents/subfolder/SUBME.md?ref=master"));
+    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/basic-sample/contents/subfolder/SUBME.md"));
     expect(GHAPI.lastRequest().method).toEqual("PUT");
-    content = JSON.parse(GHAPI.lastRequest().requestBody).content;
-    expect(JSON.parse(GHAPI.lastRequest().requestBody).message).toEqual(commit_message);
-    expect(content).toEqual(GitHub.Base64.encode(file_content));
+    response = JSON.parse(GHAPI.lastRequest().requestBody);
+    expect(response.message).toEqual(commit_message);
+    expect(response.content).toEqual(GitHub.Base64.encode(file_content));
+    expect(response.branch).toEqual("master");
   });
 
   it("should call success cb() on create_file", function()
   {
-    var options = {success: function(){}, beforeSend:function(e1, e2) {console.log(e2)}};
+    var options = {success: function(){}};
     spyOn(options, 'success');
     file_content = "Hello World!!!";
     commit_message = 'added README.md';
@@ -188,10 +189,9 @@ describe('Github.repo.create_file', function(){
     var options = {success: function(){} };
     file_content = "Hello World!!!";
     commit_message = 'added hello.txt';
-    newFile = r.create_file('master', "subfolder/SUBME.md", file_content, commit_message, options);
+    newFile = r.create_file('master', "README.md", file_content, commit_message, options);
     GHAPI.respond();
-    expect(true).toBe(false); // WERE NOT GENERATING CREATE CALLS WITH THE RUBY SCRIPT
-    //expect(newFile.get('sha')).toEqual(GHObjects.contents["master"]["/"].response.content.sha);
+    expect(newFile.get('sha')).toEqual(GHObjects.contents.create.response.content.sha);
   });
 
   it("should PUT to the URL in the actual repo on github", function()

@@ -74,7 +74,7 @@ var GHAPI = {
 
   contents : function(branch, path)
   {
-    return GHObjects.contents[branch][path];
+    return GHObjects.contents.show[branch][path];
   }
 
 };

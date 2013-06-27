@@ -30,13 +30,16 @@ describe("Tree", function() {
 
   it("fetch should work on child trees because they have a url", function() {
     GHAPI.fake();
-    console.log(GHObjects.trees.show.response)
     var tree = new GitHub.Tree(GHObjects.trees.show.response);
     var sub_tree = tree.trees.first();
-    console.log(sub_tree);
     sub_tree.fetch();
     GHAPI.respond();
-    expect(GHAPI.lastRequest().url).toEqual(GHObjects.trees.show.response.tree[1].url);
+
+    subfolder_tree = _.find(GHObjects.trees.show.response.tree, function(git) {
+        return git.type == "tree"
+    });
+
+    expect(GHAPI.lastRequest().url).toEqual(subfolder_tree.url);
     GHAPI.unfake();
   });
 
