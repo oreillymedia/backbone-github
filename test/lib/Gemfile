@@ -1,0 +1,2 @@
+source 'https://rubygems.org'
+gem "octokit", :git => "git@github.com:octokit/octokit.rb.git"

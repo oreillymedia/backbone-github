@@ -35,6 +35,8 @@ var GHAPI = {
   {
     if(obj.response && obj.call)
     {
+      //console.log("Faking: [" + obj.call.method + "] " + obj.call.url + " with:");
+      //console.log(obj.response);
       this.fakeRequest(obj.call.method, obj.call.url, obj.response);
     }
     else

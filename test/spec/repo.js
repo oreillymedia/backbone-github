@@ -87,10 +87,11 @@ describe("GitHub.repo.contents()", function() {
   {
     file_content = "Hello World!!!"
     r.create_file('master', "subfolder/SUBME.md", file_content)
-    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/basic-sample/contents/subfolder/SUBME.md?ref=master"));
+    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/basic-sample/contents/subfolder/SUBME.md"));
     expect(GHAPI.lastRequest().method).toEqual("PUT");
-    content = JSON.parse(GHAPI.lastRequest().requestBody).content;
-    expect(content).toEqual(GitHub.Base64.encode(file_content));
+    response = JSON.parse(GHAPI.lastRequest().requestBody);
+    expect(response.content).toEqual(GitHub.Base64.encode(file_content));
+    expect(response.branch).toEqual("master");
   });
 
   it("should return GitHub.Content in Repo.contents()", function()
@@ -162,11 +163,11 @@ describe('Github.repo.create_file', function(){
 
   it("should call success cb() on create_file", function()
   {
-    var options = {success: function(){}};
+    var options = {success: function(){}, beforeSend:function(e1, e2) {console.log(e2)}};
     spyOn(options, 'success');
     file_content = "Hello World!!!";
-    commit_message = 'added hello.txt';
-    r.create_file('master', "subfolder/SUBME.md", file_content, commit_message, options);
+    commit_message = 'added README.md';
+    r.create_file('master', "README.md", file_content, commit_message, options);
     GHAPI.respond();
     expect(options.success).toHaveBeenCalled();
   });

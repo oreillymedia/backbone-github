@@ -3,12 +3,14 @@
 # This file makes it easy to update the fake GHAPI with responses from the actual GitHub API.
 # Run this file like this:
 #
-#   $ ruby generate_gh_api.rb TOKEN
+#   $ bundle # installs the gems directly from GitHub (needed)
+#   $ bundle exec ruby generate_gh_api.rb TOKEN
 #
 # This will output a bunch of JS into gh_objects.js
 
 require 'octokit'
 require 'json'
+require 'base64'
 
 module FaradayMiddleware
   class LogRequest
@@ -95,14 +97,29 @@ file_objects[:branches][:index] = get_hash_with_call_data(@client.branches(@repo
 # List root of all branches and follow down the rabbit hole
 puts "Going down the contents rabbit hole"
 file_objects[:contents] = {}
+file_objects[:contents][:show] = {}
 file_objects[:branches][:index][:response].each do |branch|
-  file_objects[:contents][branch.name] = load_content({}, "/", branch.name)
+  file_objects[:contents][:show][branch.name] = load_content({}, "/", branch.name)
 end
 
-# grab tree of first folder in master
+# update a file and save in response
+puts "Updating README.md"
+first_file = file_objects[:contents][:show]["master"]["README.md"][:response]
+file_objects[:contents][:create] = get_hash_with_call_data(
+  @client.update_contents(
+    @repo_path,
+    first_file["path"],
+    "Updating README.md",
+    first_file["sha"],
+    Base64.decode64(first_file.content) + "!",
+    :branch => "master"
+  )
+)
+
+# grab tree of master
 puts "Loading trees data"
 file_objects[:trees] = {}
-file_objects[:trees][:show] = get_hash_with_call_data(@client.tree(@repo_path, file_objects[:contents]["master"]["/"][:response].find {|h| h.type == "dir"}.sha ))
+file_objects[:trees][:show] = get_hash_with_call_data(@client.tree(@repo_path, "master"))
 
 puts "Writing to file"
 File.open("gh_objects.js", 'w') { |file|
