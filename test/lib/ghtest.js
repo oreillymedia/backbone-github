@@ -87,7 +87,7 @@ var GHResponses.orgs.show = {
   "following": 0,
   "html_url": "https://github.com/oreillymedia",
   "created_at": "2010-08-31T20:42:21Z",
-  "updated_at": "2013-06-27T14:57:47Z",
+  "updated_at": "2013-06-27T15:10:32Z",
   "type": "Organization",
   "total_private_repos": 70,
   "owned_private_repos": 70,
@@ -642,9 +642,9 @@ var GHResponses.repos.org_index = [
   }
 ];
 var GHResponses.repos.show = {
-  "id": 10690032,
-  "name": "ace-builds",
-  "full_name": "runemadsen/ace-builds",
+  "id": 10998418,
+  "name": "basic-sample",
+  "full_name": "runemadsen/basic-sample",
   "owner": {
     "login": "runemadsen",
     "id": 192021,
@@ -664,56 +664,56 @@ var GHResponses.repos.show = {
     "type": "User"
   },
   "private": false,
-  "html_url": "https://github.com/runemadsen/ace-builds",
-  "description": "",
-  "fork": true,
-  "url": "https://api.github.com/repos/runemadsen/ace-builds",
-  "forks_url": "https://api.github.com/repos/runemadsen/ace-builds/forks",
-  "keys_url": "https://api.github.com/repos/runemadsen/ace-builds/keys{/key_id}",
-  "collaborators_url": "https://api.github.com/repos/runemadsen/ace-builds/collaborators{/collaborator}",
-  "teams_url": "https://api.github.com/repos/runemadsen/ace-builds/teams",
-  "hooks_url": "https://api.github.com/repos/runemadsen/ace-builds/hooks",
-  "issue_events_url": "https://api.github.com/repos/runemadsen/ace-builds/issues/events{/number}",
-  "events_url": "https://api.github.com/repos/runemadsen/ace-builds/events",
-  "assignees_url": "https://api.github.com/repos/runemadsen/ace-builds/assignees{/user}",
-  "branches_url": "https://api.github.com/repos/runemadsen/ace-builds/branches{/branch}",
-  "tags_url": "https://api.github.com/repos/runemadsen/ace-builds/tags",
-  "blobs_url": "https://api.github.com/repos/runemadsen/ace-builds/git/blobs{/sha}",
-  "git_tags_url": "https://api.github.com/repos/runemadsen/ace-builds/git/tags{/sha}",
-  "git_refs_url": "https://api.github.com/repos/runemadsen/ace-builds/git/refs{/sha}",
-  "trees_url": "https://api.github.com/repos/runemadsen/ace-builds/git/trees{/sha}",
-  "statuses_url": "https://api.github.com/repos/runemadsen/ace-builds/statuses/{sha}",
-  "languages_url": "https://api.github.com/repos/runemadsen/ace-builds/languages",
-  "stargazers_url": "https://api.github.com/repos/runemadsen/ace-builds/stargazers",
-  "contributors_url": "https://api.github.com/repos/runemadsen/ace-builds/contributors",
-  "subscribers_url": "https://api.github.com/repos/runemadsen/ace-builds/subscribers",
-  "subscription_url": "https://api.github.com/repos/runemadsen/ace-builds/subscription",
-  "commits_url": "https://api.github.com/repos/runemadsen/ace-builds/commits{/sha}",
-  "git_commits_url": "https://api.github.com/repos/runemadsen/ace-builds/git/commits{/sha}",
-  "comments_url": "https://api.github.com/repos/runemadsen/ace-builds/comments{/number}",
-  "issue_comment_url": "https://api.github.com/repos/runemadsen/ace-builds/issues/comments/{number}",
-  "contents_url": "https://api.github.com/repos/runemadsen/ace-builds/contents/{+path}",
-  "compare_url": "https://api.github.com/repos/runemadsen/ace-builds/compare/{base}...{head}",
-  "merges_url": "https://api.github.com/repos/runemadsen/ace-builds/merges",
-  "archive_url": "https://api.github.com/repos/runemadsen/ace-builds/{archive_format}{/ref}",
-  "downloads_url": "https://api.github.com/repos/runemadsen/ace-builds/downloads",
-  "issues_url": "https://api.github.com/repos/runemadsen/ace-builds/issues{/number}",
-  "pulls_url": "https://api.github.com/repos/runemadsen/ace-builds/pulls{/number}",
-  "milestones_url": "https://api.github.com/repos/runemadsen/ace-builds/milestones{/number}",
-  "notifications_url": "https://api.github.com/repos/runemadsen/ace-builds/notifications{?since,all,participating}",
-  "labels_url": "https://api.github.com/repos/runemadsen/ace-builds/labels{/name}",
-  "created_at": "2013-06-14T13:58:40Z",
-  "updated_at": "2013-06-14T13:58:41Z",
-  "pushed_at": "2013-06-04T19:12:46Z",
-  "git_url": "git://github.com/runemadsen/ace-builds.git",
-  "ssh_url": "git@github.com:runemadsen/ace-builds.git",
-  "clone_url": "https://github.com/runemadsen/ace-builds.git",
-  "svn_url": "https://github.com/runemadsen/ace-builds",
+  "html_url": "https://github.com/runemadsen/basic-sample",
+  "description": "A repo used to test the GitHub API",
+  "fork": false,
+  "url": "https://api.github.com/repos/runemadsen/basic-sample",
+  "forks_url": "https://api.github.com/repos/runemadsen/basic-sample/forks",
+  "keys_url": "https://api.github.com/repos/runemadsen/basic-sample/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/runemadsen/basic-sample/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/runemadsen/basic-sample/teams",
+  "hooks_url": "https://api.github.com/repos/runemadsen/basic-sample/hooks",
+  "issue_events_url": "https://api.github.com/repos/runemadsen/basic-sample/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/runemadsen/basic-sample/events",
+  "assignees_url": "https://api.github.com/repos/runemadsen/basic-sample/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/runemadsen/basic-sample/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/runemadsen/basic-sample/tags",
+  "blobs_url": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/runemadsen/basic-sample/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/runemadsen/basic-sample/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/runemadsen/basic-sample/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/runemadsen/basic-sample/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/runemadsen/basic-sample/languages",
+  "stargazers_url": "https://api.github.com/repos/runemadsen/basic-sample/stargazers",
+  "contributors_url": "https://api.github.com/repos/runemadsen/basic-sample/contributors",
+  "subscribers_url": "https://api.github.com/repos/runemadsen/basic-sample/subscribers",
+  "subscription_url": "https://api.github.com/repos/runemadsen/basic-sample/subscription",
+  "commits_url": "https://api.github.com/repos/runemadsen/basic-sample/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/runemadsen/basic-sample/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/runemadsen/basic-sample/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/runemadsen/basic-sample/issues/comments/{number}",
+  "contents_url": "https://api.github.com/repos/runemadsen/basic-sample/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/runemadsen/basic-sample/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/runemadsen/basic-sample/merges",
+  "archive_url": "https://api.github.com/repos/runemadsen/basic-sample/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/runemadsen/basic-sample/downloads",
+  "issues_url": "https://api.github.com/repos/runemadsen/basic-sample/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/runemadsen/basic-sample/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/runemadsen/basic-sample/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/runemadsen/basic-sample/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/runemadsen/basic-sample/labels{/name}",
+  "created_at": "2013-06-27T14:07:08Z",
+  "updated_at": "2013-06-27T14:11:32Z",
+  "pushed_at": "2013-06-27T14:11:31Z",
+  "git_url": "git://github.com/runemadsen/basic-sample.git",
+  "ssh_url": "git@github.com:runemadsen/basic-sample.git",
+  "clone_url": "https://github.com/runemadsen/basic-sample.git",
+  "svn_url": "https://github.com/runemadsen/basic-sample",
   "homepage": null,
-  "size": 2192,
+  "size": 144,
   "watchers_count": 0,
-  "language": "JavaScript",
-  "has_issues": false,
+  "language": null,
+  "has_issues": true,
   "has_downloads": true,
   "has_wiki": true,
   "forks_count": 0,
@@ -729,173 +729,307 @@ var GHResponses.repos.show = {
     "push": true,
     "pull": true
   },
-  "network_count": 137,
-  "parent": {
-    "id": 4124657,
-    "name": "ace-builds",
-    "full_name": "ajaxorg/ace-builds",
-    "owner": {
-      "login": "ajaxorg",
-      "id": 168515,
-      "avatar_url": "https://secure.gravatar.com/avatar/fc7dd0ffdb5290c7e473e08e14a31daa?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-org-420.png",
-      "gravatar_id": "fc7dd0ffdb5290c7e473e08e14a31daa",
-      "url": "https://api.github.com/users/ajaxorg",
-      "html_url": "https://github.com/ajaxorg",
-      "followers_url": "https://api.github.com/users/ajaxorg/followers",
-      "following_url": "https://api.github.com/users/ajaxorg/following{/other_user}",
-      "gists_url": "https://api.github.com/users/ajaxorg/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/ajaxorg/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/ajaxorg/subscriptions",
-      "organizations_url": "https://api.github.com/users/ajaxorg/orgs",
-      "repos_url": "https://api.github.com/users/ajaxorg/repos",
-      "events_url": "https://api.github.com/users/ajaxorg/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/ajaxorg/received_events",
-      "type": "Organization"
-    },
-    "private": false,
-    "html_url": "https://github.com/ajaxorg/ace-builds",
-    "description": "",
-    "fork": false,
-    "url": "https://api.github.com/repos/ajaxorg/ace-builds",
-    "forks_url": "https://api.github.com/repos/ajaxorg/ace-builds/forks",
-    "keys_url": "https://api.github.com/repos/ajaxorg/ace-builds/keys{/key_id}",
-    "collaborators_url": "https://api.github.com/repos/ajaxorg/ace-builds/collaborators{/collaborator}",
-    "teams_url": "https://api.github.com/repos/ajaxorg/ace-builds/teams",
-    "hooks_url": "https://api.github.com/repos/ajaxorg/ace-builds/hooks",
-    "issue_events_url": "https://api.github.com/repos/ajaxorg/ace-builds/issues/events{/number}",
-    "events_url": "https://api.github.com/repos/ajaxorg/ace-builds/events",
-    "assignees_url": "https://api.github.com/repos/ajaxorg/ace-builds/assignees{/user}",
-    "branches_url": "https://api.github.com/repos/ajaxorg/ace-builds/branches{/branch}",
-    "tags_url": "https://api.github.com/repos/ajaxorg/ace-builds/tags",
-    "blobs_url": "https://api.github.com/repos/ajaxorg/ace-builds/git/blobs{/sha}",
-    "git_tags_url": "https://api.github.com/repos/ajaxorg/ace-builds/git/tags{/sha}",
-    "git_refs_url": "https://api.github.com/repos/ajaxorg/ace-builds/git/refs{/sha}",
-    "trees_url": "https://api.github.com/repos/ajaxorg/ace-builds/git/trees{/sha}",
-    "statuses_url": "https://api.github.com/repos/ajaxorg/ace-builds/statuses/{sha}",
-    "languages_url": "https://api.github.com/repos/ajaxorg/ace-builds/languages",
-    "stargazers_url": "https://api.github.com/repos/ajaxorg/ace-builds/stargazers",
-    "contributors_url": "https://api.github.com/repos/ajaxorg/ace-builds/contributors",
-    "subscribers_url": "https://api.github.com/repos/ajaxorg/ace-builds/subscribers",
-    "subscription_url": "https://api.github.com/repos/ajaxorg/ace-builds/subscription",
-    "commits_url": "https://api.github.com/repos/ajaxorg/ace-builds/commits{/sha}",
-    "git_commits_url": "https://api.github.com/repos/ajaxorg/ace-builds/git/commits{/sha}",
-    "comments_url": "https://api.github.com/repos/ajaxorg/ace-builds/comments{/number}",
-    "issue_comment_url": "https://api.github.com/repos/ajaxorg/ace-builds/issues/comments/{number}",
-    "contents_url": "https://api.github.com/repos/ajaxorg/ace-builds/contents/{+path}",
-    "compare_url": "https://api.github.com/repos/ajaxorg/ace-builds/compare/{base}...{head}",
-    "merges_url": "https://api.github.com/repos/ajaxorg/ace-builds/merges",
-    "archive_url": "https://api.github.com/repos/ajaxorg/ace-builds/{archive_format}{/ref}",
-    "downloads_url": "https://api.github.com/repos/ajaxorg/ace-builds/downloads",
-    "issues_url": "https://api.github.com/repos/ajaxorg/ace-builds/issues{/number}",
-    "pulls_url": "https://api.github.com/repos/ajaxorg/ace-builds/pulls{/number}",
-    "milestones_url": "https://api.github.com/repos/ajaxorg/ace-builds/milestones{/number}",
-    "notifications_url": "https://api.github.com/repos/ajaxorg/ace-builds/notifications{?since,all,participating}",
-    "labels_url": "https://api.github.com/repos/ajaxorg/ace-builds/labels{/name}",
-    "created_at": "2012-04-24T13:02:24Z",
-    "updated_at": "2013-06-27T13:30:55Z",
-    "pushed_at": "2013-06-04T19:12:46Z",
-    "git_url": "git://github.com/ajaxorg/ace-builds.git",
-    "ssh_url": "git@github.com:ajaxorg/ace-builds.git",
-    "clone_url": "https://github.com/ajaxorg/ace-builds.git",
-    "svn_url": "https://github.com/ajaxorg/ace-builds",
-    "homepage": null,
-    "size": 2192,
-    "watchers_count": 183,
-    "language": "JavaScript",
-    "has_issues": true,
-    "has_downloads": true,
-    "has_wiki": true,
-    "forks_count": 137,
-    "mirror_url": null,
-    "open_issues_count": 0,
-    "forks": 137,
-    "open_issues": 0,
-    "watchers": 183,
-    "master_branch": "master",
-    "default_branch": "master"
+  "network_count": 0
+};
+var GHResponses.branches = {
+};
+var GHResponses.branches.index = [
+  {
+    "name": "master",
+    "commit": {
+      "sha": "27fd8ec05642b7bedca4921d7c8253d8002e60f9",
+      "url": "https://api.github.com/repos/runemadsen/basic-sample/commits/27fd8ec05642b7bedca4921d7c8253d8002e60f9"
+    }
   },
-  "source": {
-    "id": 4124657,
-    "name": "ace-builds",
-    "full_name": "ajaxorg/ace-builds",
-    "owner": {
-      "login": "ajaxorg",
-      "id": 168515,
-      "avatar_url": "https://secure.gravatar.com/avatar/fc7dd0ffdb5290c7e473e08e14a31daa?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-org-420.png",
-      "gravatar_id": "fc7dd0ffdb5290c7e473e08e14a31daa",
-      "url": "https://api.github.com/users/ajaxorg",
-      "html_url": "https://github.com/ajaxorg",
-      "followers_url": "https://api.github.com/users/ajaxorg/followers",
-      "following_url": "https://api.github.com/users/ajaxorg/following{/other_user}",
-      "gists_url": "https://api.github.com/users/ajaxorg/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/ajaxorg/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/ajaxorg/subscriptions",
-      "organizations_url": "https://api.github.com/users/ajaxorg/orgs",
-      "repos_url": "https://api.github.com/users/ajaxorg/repos",
-      "events_url": "https://api.github.com/users/ajaxorg/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/ajaxorg/received_events",
-      "type": "Organization"
-    },
-    "private": false,
-    "html_url": "https://github.com/ajaxorg/ace-builds",
-    "description": "",
-    "fork": false,
-    "url": "https://api.github.com/repos/ajaxorg/ace-builds",
-    "forks_url": "https://api.github.com/repos/ajaxorg/ace-builds/forks",
-    "keys_url": "https://api.github.com/repos/ajaxorg/ace-builds/keys{/key_id}",
-    "collaborators_url": "https://api.github.com/repos/ajaxorg/ace-builds/collaborators{/collaborator}",
-    "teams_url": "https://api.github.com/repos/ajaxorg/ace-builds/teams",
-    "hooks_url": "https://api.github.com/repos/ajaxorg/ace-builds/hooks",
-    "issue_events_url": "https://api.github.com/repos/ajaxorg/ace-builds/issues/events{/number}",
-    "events_url": "https://api.github.com/repos/ajaxorg/ace-builds/events",
-    "assignees_url": "https://api.github.com/repos/ajaxorg/ace-builds/assignees{/user}",
-    "branches_url": "https://api.github.com/repos/ajaxorg/ace-builds/branches{/branch}",
-    "tags_url": "https://api.github.com/repos/ajaxorg/ace-builds/tags",
-    "blobs_url": "https://api.github.com/repos/ajaxorg/ace-builds/git/blobs{/sha}",
-    "git_tags_url": "https://api.github.com/repos/ajaxorg/ace-builds/git/tags{/sha}",
-    "git_refs_url": "https://api.github.com/repos/ajaxorg/ace-builds/git/refs{/sha}",
-    "trees_url": "https://api.github.com/repos/ajaxorg/ace-builds/git/trees{/sha}",
-    "statuses_url": "https://api.github.com/repos/ajaxorg/ace-builds/statuses/{sha}",
-    "languages_url": "https://api.github.com/repos/ajaxorg/ace-builds/languages",
-    "stargazers_url": "https://api.github.com/repos/ajaxorg/ace-builds/stargazers",
-    "contributors_url": "https://api.github.com/repos/ajaxorg/ace-builds/contributors",
-    "subscribers_url": "https://api.github.com/repos/ajaxorg/ace-builds/subscribers",
-    "subscription_url": "https://api.github.com/repos/ajaxorg/ace-builds/subscription",
-    "commits_url": "https://api.github.com/repos/ajaxorg/ace-builds/commits{/sha}",
-    "git_commits_url": "https://api.github.com/repos/ajaxorg/ace-builds/git/commits{/sha}",
-    "comments_url": "https://api.github.com/repos/ajaxorg/ace-builds/comments{/number}",
-    "issue_comment_url": "https://api.github.com/repos/ajaxorg/ace-builds/issues/comments/{number}",
-    "contents_url": "https://api.github.com/repos/ajaxorg/ace-builds/contents/{+path}",
-    "compare_url": "https://api.github.com/repos/ajaxorg/ace-builds/compare/{base}...{head}",
-    "merges_url": "https://api.github.com/repos/ajaxorg/ace-builds/merges",
-    "archive_url": "https://api.github.com/repos/ajaxorg/ace-builds/{archive_format}{/ref}",
-    "downloads_url": "https://api.github.com/repos/ajaxorg/ace-builds/downloads",
-    "issues_url": "https://api.github.com/repos/ajaxorg/ace-builds/issues{/number}",
-    "pulls_url": "https://api.github.com/repos/ajaxorg/ace-builds/pulls{/number}",
-    "milestones_url": "https://api.github.com/repos/ajaxorg/ace-builds/milestones{/number}",
-    "notifications_url": "https://api.github.com/repos/ajaxorg/ace-builds/notifications{?since,all,participating}",
-    "labels_url": "https://api.github.com/repos/ajaxorg/ace-builds/labels{/name}",
-    "created_at": "2012-04-24T13:02:24Z",
-    "updated_at": "2013-06-27T13:30:55Z",
-    "pushed_at": "2013-06-04T19:12:46Z",
-    "git_url": "git://github.com/ajaxorg/ace-builds.git",
-    "ssh_url": "git@github.com:ajaxorg/ace-builds.git",
-    "clone_url": "https://github.com/ajaxorg/ace-builds.git",
-    "svn_url": "https://github.com/ajaxorg/ace-builds",
-    "homepage": null,
-    "size": 2192,
-    "watchers_count": 183,
-    "language": "JavaScript",
-    "has_issues": true,
-    "has_downloads": true,
-    "has_wiki": true,
-    "forks_count": 137,
-    "mirror_url": null,
-    "open_issues_count": 0,
-    "forks": 137,
-    "open_issues": 0,
-    "watchers": 183,
-    "master_branch": "master",
-    "default_branch": "master"
+  {
+    "name": "slave",
+    "commit": {
+      "sha": "015cd52c87ec34a4f6b48162113faffdd79c031f",
+      "url": "https://api.github.com/repos/runemadsen/basic-sample/commits/015cd52c87ec34a4f6b48162113faffdd79c031f"
+    }
   }
+];
+var GHResponses.contents = {
+  "master": {
+    "/": [
+      {
+        "name": "README.md",
+        "path": "README.md",
+        "sha": "b21d14bffde1ef30f298d9d2d0388858af7f7f90",
+        "size": 27,
+        "url": "https://api.github.com/repos/runemadsen/basic-sample/contents/README.md?ref=master",
+        "html_url": "https://github.com/runemadsen/basic-sample/blob/master/README.md",
+        "git_url": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/b21d14bffde1ef30f298d9d2d0388858af7f7f90",
+        "type": "file",
+        "_links": {
+          "self": "https://api.github.com/repos/runemadsen/basic-sample/contents/README.md?ref=master",
+          "git": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/b21d14bffde1ef30f298d9d2d0388858af7f7f90",
+          "html": "https://github.com/runemadsen/basic-sample/blob/master/README.md"
+        }
+      },
+      {
+        "name": "index.html",
+        "path": "index.html",
+        "sha": "0fe7afa70196a84fc7ce2c6e7b8de8ac15202bea",
+        "size": 54,
+        "url": "https://api.github.com/repos/runemadsen/basic-sample/contents/index.html?ref=master",
+        "html_url": "https://github.com/runemadsen/basic-sample/blob/master/index.html",
+        "git_url": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/0fe7afa70196a84fc7ce2c6e7b8de8ac15202bea",
+        "type": "file",
+        "_links": {
+          "self": "https://api.github.com/repos/runemadsen/basic-sample/contents/index.html?ref=master",
+          "git": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/0fe7afa70196a84fc7ce2c6e7b8de8ac15202bea",
+          "html": "https://github.com/runemadsen/basic-sample/blob/master/index.html"
+        }
+      },
+      {
+        "name": "subfolder",
+        "path": "subfolder",
+        "sha": "a4bae5cbf0e9fc0395eddafc16b759994c1cb3bc",
+        "size": null,
+        "url": "https://api.github.com/repos/runemadsen/basic-sample/contents/subfolder?ref=master",
+        "html_url": "https://github.com/runemadsen/basic-sample/tree/master/subfolder",
+        "git_url": "https://api.github.com/repos/runemadsen/basic-sample/git/trees/a4bae5cbf0e9fc0395eddafc16b759994c1cb3bc",
+        "type": "dir",
+        "_links": {
+          "self": "https://api.github.com/repos/runemadsen/basic-sample/contents/subfolder?ref=master",
+          "git": "https://api.github.com/repos/runemadsen/basic-sample/git/trees/a4bae5cbf0e9fc0395eddafc16b759994c1cb3bc",
+          "html": "https://github.com/runemadsen/basic-sample/tree/master/subfolder"
+        }
+      }
+    ],
+    "README.md": {
+      "name": "README.md",
+      "path": "README.md",
+      "sha": "b21d14bffde1ef30f298d9d2d0388858af7f7f90",
+      "size": 27,
+      "url": "https://api.github.com/repos/runemadsen/basic-sample/contents/README.md?ref=master",
+      "html_url": "https://github.com/runemadsen/basic-sample/blob/master/README.md",
+      "git_url": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/b21d14bffde1ef30f298d9d2d0388858af7f7f90",
+      "type": "file",
+      "content": "UkVBRE1FCj09PT09PQoKSGVsbG8gV29ybGQh\n",
+      "encoding": "base64",
+      "_links": {
+        "self": "https://api.github.com/repos/runemadsen/basic-sample/contents/README.md?ref=master",
+        "git": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/b21d14bffde1ef30f298d9d2d0388858af7f7f90",
+        "html": "https://github.com/runemadsen/basic-sample/blob/master/README.md"
+      }
+    },
+    "index.html": {
+      "name": "index.html",
+      "path": "index.html",
+      "sha": "0fe7afa70196a84fc7ce2c6e7b8de8ac15202bea",
+      "size": 54,
+      "url": "https://api.github.com/repos/runemadsen/basic-sample/contents/index.html?ref=master",
+      "html_url": "https://github.com/runemadsen/basic-sample/blob/master/index.html",
+      "git_url": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/0fe7afa70196a84fc7ce2c6e7b8de8ac15202bea",
+      "type": "file",
+      "content": "PGh0bWw+CiAgPGJvZHk+CiAgICBIZWxsbyBmcm9tIEhUTUwhCiAgPC9ib2R5\nPgo8L2h0bWw+\n",
+      "encoding": "base64",
+      "_links": {
+        "self": "https://api.github.com/repos/runemadsen/basic-sample/contents/index.html?ref=master",
+        "git": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/0fe7afa70196a84fc7ce2c6e7b8de8ac15202bea",
+        "html": "https://github.com/runemadsen/basic-sample/blob/master/index.html"
+      }
+    },
+    "subfolder": [
+      {
+        "name": "SUBME.md",
+        "path": "subfolder/SUBME.md",
+        "sha": "748de8ca95820627b8ff75fbccf25a7264ab47a3",
+        "size": 25,
+        "url": "https://api.github.com/repos/runemadsen/basic-sample/contents/subfolder/SUBME.md?ref=master",
+        "html_url": "https://github.com/runemadsen/basic-sample/blob/master/subfolder/SUBME.md",
+        "git_url": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/748de8ca95820627b8ff75fbccf25a7264ab47a3",
+        "type": "file",
+        "_links": {
+          "self": "https://api.github.com/repos/runemadsen/basic-sample/contents/subfolder/SUBME.md?ref=master",
+          "git": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/748de8ca95820627b8ff75fbccf25a7264ab47a3",
+          "html": "https://github.com/runemadsen/basic-sample/blob/master/subfolder/SUBME.md"
+        }
+      }
+    ],
+    "subfolder/SUBME.md": {
+      "name": "SUBME.md",
+      "path": "subfolder/SUBME.md",
+      "sha": "748de8ca95820627b8ff75fbccf25a7264ab47a3",
+      "size": 25,
+      "url": "https://api.github.com/repos/runemadsen/basic-sample/contents/subfolder/SUBME.md?ref=master",
+      "html_url": "https://github.com/runemadsen/basic-sample/blob/master/subfolder/SUBME.md",
+      "git_url": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/748de8ca95820627b8ff75fbccf25a7264ab47a3",
+      "type": "file",
+      "content": "U1VCTUUKPT09PT0KCkhlbGxvIFdvcmxkIQ==\n",
+      "encoding": "base64",
+      "_links": {
+        "self": "https://api.github.com/repos/runemadsen/basic-sample/contents/subfolder/SUBME.md?ref=master",
+        "git": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/748de8ca95820627b8ff75fbccf25a7264ab47a3",
+        "html": "https://github.com/runemadsen/basic-sample/blob/master/subfolder/SUBME.md"
+      }
+    }
+  },
+  "slave": {
+    "/": [
+      {
+        "name": "README.md",
+        "path": "README.md",
+        "sha": "b21d14bffde1ef30f298d9d2d0388858af7f7f90",
+        "size": 27,
+        "url": "https://api.github.com/repos/runemadsen/basic-sample/contents/README.md?ref=slave",
+        "html_url": "https://github.com/runemadsen/basic-sample/blob/slave/README.md",
+        "git_url": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/b21d14bffde1ef30f298d9d2d0388858af7f7f90",
+        "type": "file",
+        "_links": {
+          "self": "https://api.github.com/repos/runemadsen/basic-sample/contents/README.md?ref=slave",
+          "git": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/b21d14bffde1ef30f298d9d2d0388858af7f7f90",
+          "html": "https://github.com/runemadsen/basic-sample/blob/slave/README.md"
+        }
+      },
+      {
+        "name": "SLAVEME.md",
+        "path": "SLAVEME.md",
+        "sha": "5591c4cce8c4876cd48f32f6d6795f8881bf4b1f",
+        "size": 29,
+        "url": "https://api.github.com/repos/runemadsen/basic-sample/contents/SLAVEME.md?ref=slave",
+        "html_url": "https://github.com/runemadsen/basic-sample/blob/slave/SLAVEME.md",
+        "git_url": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/5591c4cce8c4876cd48f32f6d6795f8881bf4b1f",
+        "type": "file",
+        "_links": {
+          "self": "https://api.github.com/repos/runemadsen/basic-sample/contents/SLAVEME.md?ref=slave",
+          "git": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/5591c4cce8c4876cd48f32f6d6795f8881bf4b1f",
+          "html": "https://github.com/runemadsen/basic-sample/blob/slave/SLAVEME.md"
+        }
+      },
+      {
+        "name": "index.html",
+        "path": "index.html",
+        "sha": "0fe7afa70196a84fc7ce2c6e7b8de8ac15202bea",
+        "size": 54,
+        "url": "https://api.github.com/repos/runemadsen/basic-sample/contents/index.html?ref=slave",
+        "html_url": "https://github.com/runemadsen/basic-sample/blob/slave/index.html",
+        "git_url": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/0fe7afa70196a84fc7ce2c6e7b8de8ac15202bea",
+        "type": "file",
+        "_links": {
+          "self": "https://api.github.com/repos/runemadsen/basic-sample/contents/index.html?ref=slave",
+          "git": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/0fe7afa70196a84fc7ce2c6e7b8de8ac15202bea",
+          "html": "https://github.com/runemadsen/basic-sample/blob/slave/index.html"
+        }
+      },
+      {
+        "name": "subfolder",
+        "path": "subfolder",
+        "sha": "a4bae5cbf0e9fc0395eddafc16b759994c1cb3bc",
+        "size": null,
+        "url": "https://api.github.com/repos/runemadsen/basic-sample/contents/subfolder?ref=slave",
+        "html_url": "https://github.com/runemadsen/basic-sample/tree/slave/subfolder",
+        "git_url": "https://api.github.com/repos/runemadsen/basic-sample/git/trees/a4bae5cbf0e9fc0395eddafc16b759994c1cb3bc",
+        "type": "dir",
+        "_links": {
+          "self": "https://api.github.com/repos/runemadsen/basic-sample/contents/subfolder?ref=slave",
+          "git": "https://api.github.com/repos/runemadsen/basic-sample/git/trees/a4bae5cbf0e9fc0395eddafc16b759994c1cb3bc",
+          "html": "https://github.com/runemadsen/basic-sample/tree/slave/subfolder"
+        }
+      }
+    ],
+    "README.md": {
+      "name": "README.md",
+      "path": "README.md",
+      "sha": "b21d14bffde1ef30f298d9d2d0388858af7f7f90",
+      "size": 27,
+      "url": "https://api.github.com/repos/runemadsen/basic-sample/contents/README.md?ref=slave",
+      "html_url": "https://github.com/runemadsen/basic-sample/blob/slave/README.md",
+      "git_url": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/b21d14bffde1ef30f298d9d2d0388858af7f7f90",
+      "type": "file",
+      "content": "UkVBRE1FCj09PT09PQoKSGVsbG8gV29ybGQh\n",
+      "encoding": "base64",
+      "_links": {
+        "self": "https://api.github.com/repos/runemadsen/basic-sample/contents/README.md?ref=slave",
+        "git": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/b21d14bffde1ef30f298d9d2d0388858af7f7f90",
+        "html": "https://github.com/runemadsen/basic-sample/blob/slave/README.md"
+      }
+    },
+    "SLAVEME.md": {
+      "name": "SLAVEME.md",
+      "path": "SLAVEME.md",
+      "sha": "5591c4cce8c4876cd48f32f6d6795f8881bf4b1f",
+      "size": 29,
+      "url": "https://api.github.com/repos/runemadsen/basic-sample/contents/SLAVEME.md?ref=slave",
+      "html_url": "https://github.com/runemadsen/basic-sample/blob/slave/SLAVEME.md",
+      "git_url": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/5591c4cce8c4876cd48f32f6d6795f8881bf4b1f",
+      "type": "file",
+      "content": "U0xBVkVNRQo9PT09PT09CgpIZWxsbyBXb3JsZCE=\n",
+      "encoding": "base64",
+      "_links": {
+        "self": "https://api.github.com/repos/runemadsen/basic-sample/contents/SLAVEME.md?ref=slave",
+        "git": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/5591c4cce8c4876cd48f32f6d6795f8881bf4b1f",
+        "html": "https://github.com/runemadsen/basic-sample/blob/slave/SLAVEME.md"
+      }
+    },
+    "index.html": {
+      "name": "index.html",
+      "path": "index.html",
+      "sha": "0fe7afa70196a84fc7ce2c6e7b8de8ac15202bea",
+      "size": 54,
+      "url": "https://api.github.com/repos/runemadsen/basic-sample/contents/index.html?ref=slave",
+      "html_url": "https://github.com/runemadsen/basic-sample/blob/slave/index.html",
+      "git_url": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/0fe7afa70196a84fc7ce2c6e7b8de8ac15202bea",
+      "type": "file",
+      "content": "PGh0bWw+CiAgPGJvZHk+CiAgICBIZWxsbyBmcm9tIEhUTUwhCiAgPC9ib2R5\nPgo8L2h0bWw+\n",
+      "encoding": "base64",
+      "_links": {
+        "self": "https://api.github.com/repos/runemadsen/basic-sample/contents/index.html?ref=slave",
+        "git": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/0fe7afa70196a84fc7ce2c6e7b8de8ac15202bea",
+        "html": "https://github.com/runemadsen/basic-sample/blob/slave/index.html"
+      }
+    },
+    "subfolder": [
+      {
+        "name": "SUBME.md",
+        "path": "subfolder/SUBME.md",
+        "sha": "748de8ca95820627b8ff75fbccf25a7264ab47a3",
+        "size": 25,
+        "url": "https://api.github.com/repos/runemadsen/basic-sample/contents/subfolder/SUBME.md?ref=slave",
+        "html_url": "https://github.com/runemadsen/basic-sample/blob/slave/subfolder/SUBME.md",
+        "git_url": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/748de8ca95820627b8ff75fbccf25a7264ab47a3",
+        "type": "file",
+        "_links": {
+          "self": "https://api.github.com/repos/runemadsen/basic-sample/contents/subfolder/SUBME.md?ref=slave",
+          "git": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/748de8ca95820627b8ff75fbccf25a7264ab47a3",
+          "html": "https://github.com/runemadsen/basic-sample/blob/slave/subfolder/SUBME.md"
+        }
+      }
+    ],
+    "subfolder/SUBME.md": {
+      "name": "SUBME.md",
+      "path": "subfolder/SUBME.md",
+      "sha": "748de8ca95820627b8ff75fbccf25a7264ab47a3",
+      "size": 25,
+      "url": "https://api.github.com/repos/runemadsen/basic-sample/contents/subfolder/SUBME.md?ref=slave",
+      "html_url": "https://github.com/runemadsen/basic-sample/blob/slave/subfolder/SUBME.md",
+      "git_url": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/748de8ca95820627b8ff75fbccf25a7264ab47a3",
+      "type": "file",
+      "content": "U1VCTUUKPT09PT0KCkhlbGxvIFdvcmxkIQ==\n",
+      "encoding": "base64",
+      "_links": {
+        "self": "https://api.github.com/repos/runemadsen/basic-sample/contents/subfolder/SUBME.md?ref=slave",
+        "git": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/748de8ca95820627b8ff75fbccf25a7264ab47a3",
+        "html": "https://github.com/runemadsen/basic-sample/blob/slave/subfolder/SUBME.md"
+      }
+    }
+  }
+};
+var GHResponses.trees = {
+};
+var GHResponses.trees.show = {
+  "sha": "a4bae5cbf0e9fc0395eddafc16b759994c1cb3bc",
+  "url": "https://api.github.com/repos/runemadsen/basic-sample/git/trees/a4bae5cbf0e9fc0395eddafc16b759994c1cb3bc",
+  "tree": [
+    {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "748de8ca95820627b8ff75fbccf25a7264ab47a3",
+      "path": "SUBME.md",
+      "size": 25,
+      "url": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/748de8ca95820627b8ff75fbccf25a7264ab47a3"
+    }
+  ]
 };
