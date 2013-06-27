@@ -16,7 +16,7 @@ describe("Organization", function() {
 
 	it("should call correct URL in organization.repos()", function()
 	{
-  	var o = new GitHub.Organization(GHResponses.orgs.show)
+  	var o = new GitHub.Organization(GHObjects.orgs.show.response);
   	o.repos();
   	expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/orgs/oreillymedia/repos"));
 	});

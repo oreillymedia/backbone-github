@@ -4,7 +4,7 @@
 describe("Repo", function() {
 
   beforeEach(function() {
-    GHAPI.fake();
+    GHAPI.fake(true);
   });
 
   afterEach(function() {
@@ -13,62 +13,53 @@ describe("Repo", function() {
 
   it("should have backboneClass", function()
   {
-    var r = new GitHub.Repo({full_name:"runemadsen/Hello-World"});
+    var r = new GitHub.Repo({full_name:"runemadsen/basic-sample"});
     expect(r.backboneClass).toEqual("Repo");
   });
 
 	it("should call correct URL in Repo.fetch()", function()
 	{
-  	GitHub.Repo.fetch('runemadsen', 'Hello-World');
-  	expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/Hello-World"));
+  	GitHub.Repo.fetch('runemadsen', 'basic-sample');
+  	expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/basic-sample"));
 	});
 
   it("should call correct URL in Repo.fetch() with only full_name", function()
   {
-    var r = new GitHub.Repo({full_name:"runemadsen/Hello-World"})
+    var r = new GitHub.Repo({full_name:"runemadsen/basic-sample"})
     r.fetch();
-    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/Hello-World"));
+    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/basic-sample"));
   });
 
   it("should call correct URL in Repo.fetch() with only url", function()
   {
-    var r = new GitHub.Repo({url:GHAPI.url("/repos/runemadsen/Hello-World")});
+    var r = new GitHub.Repo({url:GHAPI.url("/repos/runemadsen/basic-sample")});
     r.fetch();
-    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/Hello-World"));
+    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/basic-sample"));
   });
 
   it("should call correct URL in Repo.fetch() with only login and name", function()
   {
-    var r = new GitHub.Repo({owner:{login:"runemadsen"}, name:"Hello-World"})
+    var r = new GitHub.Repo({owner:{login:"runemadsen"}, name:"basic-sample"})
     r.fetch();
-    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/Hello-World"));
+    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/basic-sample"));
   });
 
   it("should fetch a tree from the given sha", function() {
-    var tree;
     var r = Helpers.get_repo();
-    r.tree("master", {
-      success : function(t) { tree = t }
-    })
-    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/Hello-World/git/trees/master"));
+    r.tree("master");
+    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/basic-sample/git/trees/master"));
   })
 
   it("should fetch collaborators", function() {
-    var collab;
     var r = Helpers.get_repo();
-    r.collaborators({
-      success : function(c) { collab = c }
-    })
-    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/Hello-World/collaborators"));
+    r.collaborators();
+    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/basic-sample/collaborators"));
   })
 
   it("should fetch branches", function() {
-    var branches;
     var r = Helpers.get_repo();
-    r.branches({
-      success : function(b) { branches = b }
-    })
-    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/Hello-World/branches"));
+    r.branches()
+    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/basic-sample/branches"));
   });
 
 });
@@ -78,7 +69,7 @@ describe("GitHub.repo.contents()", function() {
   var r;
 
   beforeEach(function() {
-    GHAPI.fake();
+    GHAPI.fake(true);
     r = Helpers.get_repo();
   });
 
@@ -88,15 +79,15 @@ describe("GitHub.repo.contents()", function() {
 
   it("should call correct URL in Repo.contents()", function()
   {
-    r.contents("master", "docs/hello.txt")
-    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master"));
+    r.contents("master", "subfolder/SUBME.md")
+    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/basic-sample/contents/subfolder/SUBME.md?ref=master"));
   });
 
   it("should call correct URL in Repo.create_file()", function()
   {
     file_content = "Hello World!!!"
-    r.create_file('master', "docs/hello.txt", file_content)
-    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master"));
+    r.create_file('master', "subfolder/SUBME.md", file_content)
+    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/basic-sample/contents/subfolder/SUBME.md?ref=master"));
     expect(GHAPI.lastRequest().method).toEqual("PUT");
     content = JSON.parse(GHAPI.lastRequest().requestBody).content;
     expect(content).toEqual(GitHub.Base64.encode(file_content));
@@ -104,9 +95,8 @@ describe("GitHub.repo.contents()", function() {
 
   it("should return GitHub.Content in Repo.contents()", function()
   {
-    GHAPI.fakeRequest("get", "/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master", GHResponses.contents.show_file);
     var result;
-    r.contents("master", "docs/hello.txt", {
+    r.contents("master", "subfolder/SUBME.md", {
       success : function(o) { result = o; }
     });
     GHAPI.respond();
@@ -115,9 +105,8 @@ describe("GitHub.repo.contents()", function() {
 
   it("should return GitHub.Dir in Repo.contents()", function()
   {
-    GHAPI.fakeRequest("get", "/repos/runemadsen/Hello-World/contents/docs?ref=master", GHResponses.contents.show_dir);
     var result;
-    r.contents("master", "docs", {
+    r.contents("master", "subfolder", {
       success : function(o) { result = o; }
     });
     GHAPI.respond();
@@ -126,24 +115,22 @@ describe("GitHub.repo.contents()", function() {
 
   it("should call options success callback on success", function()
   {
-    GHAPI.fakeRequest("get", "/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master", GHResponses.contents.show_file);
     var result;
     var options = { success : function() {} };
     spyOn(options, "success");
-    r.contents("master", "docs/hello.txt", options);
+    r.contents("master", "subfolder/SUBME.md", options);
     GHAPI.respond();
     expect(options.success).toHaveBeenCalled();
   });
 
   it("should return raw content parsed from Base64", function()
   {
-    GHAPI.fakeRequest("get", "/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master", GHResponses.contents.show_file);
     var result;
-    r.contents("master", "docs/hello.txt", {
+    r.contents("master", "subfolder/SUBME.md", {
       success : function(o) { result = o; }
     });
     GHAPI.respond();
-    expect(result.raw()).toBe("Hello");
+    expect(result.raw()).toBe(GitHub.Base64.decode(GHAPI.contents("master", "subfolder/SUBME.md").response.content));
   });
 
 });
@@ -165,8 +152,8 @@ describe('Github.repo.create_file', function(){
   {
     file_content = "Hello World!!!";
     commit_message = 'added file.txt';
-    r.create_file('master', "docs/hello.txt", file_content, commit_message);
-    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master"));
+    r.create_file('master', "subfolder/SUBME.md", file_content, commit_message);
+    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/basic-sample/contents/subfolder/SUBME.md?ref=master"));
     expect(GHAPI.lastRequest().method).toEqual("PUT");
     content = JSON.parse(GHAPI.lastRequest().requestBody).content;
     expect(JSON.parse(GHAPI.lastRequest().requestBody).message).toEqual(commit_message);
@@ -175,46 +162,41 @@ describe('Github.repo.create_file', function(){
 
   it("should call success cb() on create_file", function()
   {
-    GHAPI.fakeRequest("put", "/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master", GHResponses.contents.show_file);
     var options = {success: function(){}};
     spyOn(options, 'success');
     file_content = "Hello World!!!";
     commit_message = 'added hello.txt';
-    r.create_file('master', "docs/hello.txt", file_content, commit_message, options);
+    r.create_file('master', "subfolder/SUBME.md", file_content, commit_message, options);
     GHAPI.respond();
     expect(options.success).toHaveBeenCalled();
   });
 
   it("should call error cb() on create_file", function()
   {
-    GHAPI.fakeRequest("put", "/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master", GHResponses.error, 500);
     var options = {error: function(){}};
     spyOn(options, 'error');
     file_content = "Hello World!!!";
     commit_message = 'added hello.txt';
-    r.create_file('master', "docs/hello.txt", file_content, commit_message, options);
+    r.create_file('master', "subfolder/SUBME.md", file_content, commit_message, options);
     GHAPI.respond();
     expect(options.error).toHaveBeenCalled();
   });
 
   it("should modify the model based on the content returned by the api", function()
   {
-    GHAPI.fakeRequest("put", "/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master", GHResponses.contents.create);
     var options = {success: function(){} };
     file_content = "Hello World!!!";
     commit_message = 'added hello.txt';
-    newFile = r.create_file('master', "docs/hello.txt", file_content, commit_message, options);
+    newFile = r.create_file('master', "subfolder/SUBME.md", file_content, commit_message, options);
     GHAPI.respond();
-    expect(newFile.get('sha')).toEqual(GHResponses.contents.create.content.sha);
+    expect(true).toBe(false); // WERE NOT GENERATING CREATE CALLS WITH THE RUBY SCRIPT
+    //expect(newFile.get('sha')).toEqual(GHObjects.contents["master"]["/"].response.content.sha);
   });
 
   it("should PUT to the URL in the actual repo on github", function()
   {
-    GHAPI.fakeRequest("get", "/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master", GHResponses.contents.show_file);
-    GHAPI.fakeRequest("put", "/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master", GHResponses.contents.create);
-
     var result;
-    r.contents("master", "docs/hello.txt", {
+    r.contents("master", "subfolder/SUBME.md", {
         success: function(o){ result = o;},
         error: function(e){console.log(e);}
     });
@@ -222,7 +204,7 @@ describe('Github.repo.create_file', function(){
     file_content = "bye bye"
     result.cook(file_content); //need to base64
     result.save();
-    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master"));
+    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/basic-sample/contents/subfolder/SUBME.md?ref=master"));
     expect(GHAPI.lastRequest().method).toEqual("PUT");
     content = JSON.parse(GHAPI.lastRequest().requestBody).content;
     expect(content).toEqual(GitHub.Base64.encode(file_content));
