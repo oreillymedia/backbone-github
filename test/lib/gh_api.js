@@ -33,12 +33,12 @@
       this.server.respond();
     },
 
-    fakeRequest : function(method, url, responseBody, responseCode, responseHeaders)
+    fakeRequest : function(method, path, responseBody, responseCode, responseHeaders)
     {
       if(!responseCode) responseCode = 200;
       if(!responseHeaders) responseHeaders = {};
 
-      this.server.respondWith(method, url, [
+      this.server.respondWith(method, this.url(path), [
         responseCode,
         responseHeaders,
         JSON.stringify(responseBody)

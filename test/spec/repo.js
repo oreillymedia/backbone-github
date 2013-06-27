@@ -104,7 +104,7 @@ describe("GitHub.repo.contents()", function() {
 
   it("should return GitHub.Content in Repo.contents()", function()
   {
-    GHAPI.fakeRequest("get", GHAPI.url("/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master"), GHResponses.contents.show_file);
+    GHAPI.fakeRequest("get", "/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master", GHResponses.contents.show_file);
     var result;
     r.contents("master", "docs/hello.txt", {
       success : function(o) { result = o; }
@@ -115,7 +115,7 @@ describe("GitHub.repo.contents()", function() {
 
   it("should return GitHub.Dir in Repo.contents()", function()
   {
-    GHAPI.fakeRequest("get", GHAPI.url("/repos/runemadsen/Hello-World/contents/docs?ref=master"), GHResponses.contents.show_dir);
+    GHAPI.fakeRequest("get", "/repos/runemadsen/Hello-World/contents/docs?ref=master", GHResponses.contents.show_dir);
     var result;
     r.contents("master", "docs", {
       success : function(o) { result = o; }
@@ -126,7 +126,7 @@ describe("GitHub.repo.contents()", function() {
 
   it("should call options success callback on success", function()
   {
-    GHAPI.fakeRequest("get", GHAPI.url("/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master"), GHResponses.contents.show_file);
+    GHAPI.fakeRequest("get", "/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master", GHResponses.contents.show_file);
     var result;
     var options = { success : function() {} };
     spyOn(options, "success");
@@ -137,7 +137,7 @@ describe("GitHub.repo.contents()", function() {
 
   it("should return raw content parsed from Base64", function()
   {
-    GHAPI.fakeRequest("get", GHAPI.url("/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master"), GHResponses.contents.show_file);
+    GHAPI.fakeRequest("get", "/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master", GHResponses.contents.show_file);
     var result;
     r.contents("master", "docs/hello.txt", {
       success : function(o) { result = o; }
@@ -175,7 +175,7 @@ describe('Github.repo.create_file', function(){
 
   it("should call success cb() on create_file", function()
   {
-    GHAPI.fakeRequest("put", GHAPI.url("/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master"), GHResponses.contents.show_file);
+    GHAPI.fakeRequest("put", "/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master", GHResponses.contents.show_file);
     var options = {success: function(){}};
     spyOn(options, 'success');
     file_content = "Hello World!!!";
@@ -187,7 +187,7 @@ describe('Github.repo.create_file', function(){
 
   it("should call error cb() on create_file", function()
   {
-    GHAPI.fakeRequest("put", GHAPI.url("/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master"), GHResponses.error, 500);
+    GHAPI.fakeRequest("put", "/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master", GHResponses.error, 500);
     var options = {error: function(){}};
     spyOn(options, 'error');
     file_content = "Hello World!!!";
@@ -199,7 +199,7 @@ describe('Github.repo.create_file', function(){
 
   it("should modify the model based on the content returned by the api", function()
   {
-    GHAPI.fakeRequest("put", GHAPI.url("/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master"), GHResponses.contents.create);
+    GHAPI.fakeRequest("put", "/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master", GHResponses.contents.create);
     var options = {success: function(){} };
     file_content = "Hello World!!!";
     commit_message = 'added hello.txt';
@@ -210,8 +210,8 @@ describe('Github.repo.create_file', function(){
 
   it("should PUT to the URL in the actual repo on github", function()
   {
-    GHAPI.fakeRequest("get", GHAPI.url("/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master"), GHResponses.contents.show_file);
-    GHAPI.fakeRequest("put", GHAPI.url("/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master"), GHResponses.contents.create);
+    GHAPI.fakeRequest("get", "/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master", GHResponses.contents.show_file);
+    GHAPI.fakeRequest("put", "/repos/runemadsen/Hello-World/contents/docs/hello.txt?ref=master", GHResponses.contents.create);
 
     var result;
     r.contents("master", "docs/hello.txt", {

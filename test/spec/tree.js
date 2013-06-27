@@ -20,7 +20,7 @@ describe("Tree", function() {
   it("should parse data into collections on fetch", function()
   {
     GHAPI.fake();
-    GHAPI.fakeRequest("get", GHAPI.url("/repos/runemadsen/Hello-World/git/trees/master"), GHResponses.trees.show, 200);
+    GHAPI.fakeRequest("get", "/repos/runemadsen/Hello-World/git/trees/master", GHResponses.trees.show, 200);
     var tree = new GitHub.Tree({sha:"master", repo:Helpers.get_repo()});
     tree.fetch();
     GHAPI.respond();
