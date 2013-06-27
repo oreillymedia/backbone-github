@@ -31,13 +31,25 @@ users_show = Octokit.user "runemadsen"
 puts "Loading orgs.index"
 orgs_index = client.organizations("runemadsen", :per_page => 3)
 
-# grab 3 repos from personal
+# show the first of those orgs
+puts "Loading orgs.show"
+orgs_show = client.organization(orgs_index.first.login)
 
-# grab an error response
+# grab 3 repos from personal
+puts "Loading repos.index"
+repos_index = client.repos("runemadsen", :per_page => 3)
+
+# show single repo
+puts "Loading repos.show"
+repos_show = client.repo(repos_index.first.full_name)
 
 # grab 3 repos from organization
+puts "Loading org_repos.index"
+repos_org_index = client.org_repos(orgs_index.first.login, :per_page => 3)
 
 # show repo
+
+# grab an error response
 
 # contents create
 
@@ -59,6 +71,13 @@ File.open("ghtest.js", 'w') { |file|
   # create GHResponses.orgs
   file.puts to_var("GHResponses.orgs", {})
   file.puts to_var("GHResponses.orgs.index", orgs_index)
+  file.puts to_var("GHResponses.orgs.show", orgs_show)
+
+  # create GHResponses.repos
+  file.puts to_var("GHResponses.repos", {})
+  file.puts to_var("GHResponses.repos.index", repos_index)
+  file.puts to_var("GHResponses.repos.org_index", repos_org_index)
+  file.puts to_var("GHResponses.repos.show", repos_show)
 }
 
 
