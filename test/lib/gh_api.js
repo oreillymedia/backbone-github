@@ -41,9 +41,9 @@ var GHAPI = {
     }
     else
     {
-      _.each(obj, function(val, key) {
-        this.fakeRequestOnObject(val);
-      }, this);
+      for(var key in obj){
+        this.fakeRequestOnObject(obj[key]);
+      }
     }
   },
 
@@ -66,7 +66,7 @@ var GHAPI = {
 
   lastRequest : function()
   {
-    return _.last(this.server.requests);
+    return this.server.requests[this.server.requests.length-1];
   },
 
   // Helpers
