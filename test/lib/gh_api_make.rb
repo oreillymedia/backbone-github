@@ -124,6 +124,7 @@ puts "Loading orgs data"
 file_objects[:orgs] = {}
 file_objects[:orgs][:index] = http_hash(@client.organizations("runemadsen", :per_page => 3))
 file_objects[:orgs][:index][:requests] << clone_last_request(:remove => "?per_page=3")
+file_objects[:orgs][:index][:requests] << clone_last_request(:replace => "https://api.github.com/user/orgs")
 file_objects[:orgs][:show] = http_hash(@client.organization(file_objects[:orgs][:index][:response].first.login))
 
 # TODO: Make sure that basic-sample is in there!
