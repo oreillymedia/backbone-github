@@ -71,14 +71,7 @@ end
 
 def write_test_on_object(obj)
   output = ""
-  puts "NEW OBJECT"
-  puts obj.class.name
-  puts obj.is_a?(Hash)
-  puts obj.has_key?(:response)
-  puts obj.has_key?(:call)
-  puts ""
   if(obj.is_a?(Hash) && obj.has_key?(:response) && obj.has_key?(:call))
-    puts "Inside"
     output += <<-eos
   it("should stub [#{obj[:call][:method]}] #{obj[:call][:url]}", function()
   {
