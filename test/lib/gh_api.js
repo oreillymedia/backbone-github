@@ -20,7 +20,11 @@ var GHAPI = {
   fake : function(fakeAll)
   {
     this.server = sinon.fakeServer.create();
-    if(fakeAll) this.fakeRequestOnObject(GHObjects);
+
+    if(fakeAll)
+    {
+      this.fakeRequestOnObject(GHObjects);
+    }
   },
 
   unfake : function()
@@ -35,8 +39,6 @@ var GHAPI = {
   {
     if(obj.response && obj.call)
     {
-      //console.log("Faking: [" + obj.call.method + "] " + obj.call.url + " with:");
-      //console.log(obj.response);
       this.fakeRequest(obj.call.method, obj.call.url, obj.response);
     }
     else
@@ -56,6 +58,9 @@ var GHAPI = {
   {
     if(!responseCode) responseCode = 200;
     if(!responseHeaders) responseHeaders = {};
+
+    //console.log("Faking: [" + method + "] " + path + " with:");
+    //console.log(response);
 
     this.server.respondWith(method, this.url(path), [
       responseCode,
