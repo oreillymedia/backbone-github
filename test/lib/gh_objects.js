@@ -29,7 +29,7 @@ var GHObjects = {
         "followers": 143,
         "following": 35,
         "created_at": "2010-01-29T03:38:09Z",
-        "updated_at": "2013-06-27T21:18:22Z",
+        "updated_at": "2013-06-28T13:46:23Z",
         "public_gists": 114
       },
       "call": {
@@ -98,12 +98,12 @@ var GHObjects = {
         "following": 0,
         "html_url": "https://github.com/oreillymedia",
         "created_at": "2010-08-31T20:42:21Z",
-        "updated_at": "2013-06-27T21:08:50Z",
+        "updated_at": "2013-06-28T13:13:43Z",
         "type": "Organization",
-        "total_private_repos": 70,
-        "owned_private_repos": 70,
+        "total_private_repos": 71,
+        "owned_private_repos": 71,
         "private_gists": 0,
-        "disk_usage": 9198780,
+        "disk_usage": 9199956,
         "collaborators": 0,
         "billing_email": "developers@oreilly.com",
         "plan": {
@@ -457,14 +457,14 @@ var GHObjects = {
         "notifications_url": "https://api.github.com/repos/runemadsen/basic-sample/notifications{?since,all,participating}",
         "labels_url": "https://api.github.com/repos/runemadsen/basic-sample/labels{/name}",
         "created_at": "2013-06-27T14:07:08Z",
-        "updated_at": "2013-06-27T21:18:22Z",
-        "pushed_at": "2013-06-27T21:18:22Z",
+        "updated_at": "2013-06-28T13:46:23Z",
+        "pushed_at": "2013-06-28T13:46:22Z",
         "git_url": "git://github.com/runemadsen/basic-sample.git",
         "ssh_url": "git@github.com:runemadsen/basic-sample.git",
         "clone_url": "https://github.com/runemadsen/basic-sample.git",
         "svn_url": "https://github.com/runemadsen/basic-sample",
         "homepage": null,
-        "size": 188,
+        "size": 480,
         "watchers_count": 0,
         "language": null,
         "has_issues": true,
@@ -772,8 +772,8 @@ var GHObjects = {
         {
           "name": "master",
           "commit": {
-            "sha": "a9c0694a76a68435395751f87441074028f52516",
-            "url": "https://api.github.com/repos/runemadsen/basic-sample/commits/a9c0694a76a68435395751f87441074028f52516"
+            "sha": "d1564287539d685265fe5784e033a846569b1e3d",
+            "url": "https://api.github.com/repos/runemadsen/basic-sample/commits/d1564287539d685265fe5784e033a846569b1e3d"
           }
         },
         {
@@ -798,15 +798,15 @@ var GHObjects = {
             {
               "name": "README.md",
               "path": "README.md",
-              "sha": "5a6227aff764ef71129fca0b0d0115f16a633122",
-              "size": 30,
+              "sha": "ddf986b6c7d195191a82803627012155c4d60fcc",
+              "size": 46,
               "url": "https://api.github.com/repos/runemadsen/basic-sample/contents/README.md?ref=master",
               "html_url": "https://github.com/runemadsen/basic-sample/blob/master/README.md",
-              "git_url": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/5a6227aff764ef71129fca0b0d0115f16a633122",
+              "git_url": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/ddf986b6c7d195191a82803627012155c4d60fcc",
               "type": "file",
               "_links": {
                 "self": "https://api.github.com/repos/runemadsen/basic-sample/contents/README.md?ref=master",
-                "git": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/5a6227aff764ef71129fca0b0d0115f16a633122",
+                "git": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/ddf986b6c7d195191a82803627012155c4d60fcc",
                 "html": "https://github.com/runemadsen/basic-sample/blob/master/README.md"
               }
             },
@@ -850,17 +850,17 @@ var GHObjects = {
           "response": {
             "name": "README.md",
             "path": "README.md",
-            "sha": "5a6227aff764ef71129fca0b0d0115f16a633122",
-            "size": 30,
+            "sha": "ddf986b6c7d195191a82803627012155c4d60fcc",
+            "size": 46,
             "url": "https://api.github.com/repos/runemadsen/basic-sample/contents/README.md?ref=master",
             "html_url": "https://github.com/runemadsen/basic-sample/blob/master/README.md",
-            "git_url": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/5a6227aff764ef71129fca0b0d0115f16a633122",
+            "git_url": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/ddf986b6c7d195191a82803627012155c4d60fcc",
             "type": "file",
-            "content": "UkVBRE1FCj09PT09PQoKSGVsbG8gV29ybGQhIQoh\n",
+            "content": "UkVBRE1FCj09PT09PQoKSGVsbG8gV29ybGQhIQohISEhISEhISEhISEhISEh\nIQ==\n",
             "encoding": "base64",
             "_links": {
               "self": "https://api.github.com/repos/runemadsen/basic-sample/contents/README.md?ref=master",
-              "git": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/5a6227aff764ef71129fca0b0d0115f16a633122",
+              "git": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/ddf986b6c7d195191a82803627012155c4d60fcc",
               "html": "https://github.com/runemadsen/basic-sample/blob/master/README.md"
             }
           },
@@ -1130,42 +1130,42 @@ var GHObjects = {
         "content": {
           "name": "README.md",
           "path": "README.md",
-          "sha": "9b5dcd420f81e02feb7c1902ea9042ca7a183f11",
-          "size": 31,
+          "sha": "19ea08e0378a096f5c0f4d627248d528c7dffce3",
+          "size": 47,
           "url": "https://api.github.com/repos/runemadsen/basic-sample/contents/README.md?ref=master",
           "html_url": "https://github.com/runemadsen/basic-sample/blob/master/README.md",
-          "git_url": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/9b5dcd420f81e02feb7c1902ea9042ca7a183f11",
+          "git_url": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/19ea08e0378a096f5c0f4d627248d528c7dffce3",
           "type": "file",
           "_links": {
             "self": "https://api.github.com/repos/runemadsen/basic-sample/contents/README.md?ref=master",
-            "git": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/9b5dcd420f81e02feb7c1902ea9042ca7a183f11",
+            "git": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/19ea08e0378a096f5c0f4d627248d528c7dffce3",
             "html": "https://github.com/runemadsen/basic-sample/blob/master/README.md"
           }
         },
         "commit": {
-          "sha": "0845c608836b09c775fd233056f3521867be5a84",
-          "url": "https://api.github.com/repos/runemadsen/basic-sample/git/commits/0845c608836b09c775fd233056f3521867be5a84",
-          "html_url": "https://github.com/runemadsen/basic-sample/commits/0845c608836b09c775fd233056f3521867be5a84",
+          "sha": "6f8446425738363119b968de194065dbbe164245",
+          "url": "https://api.github.com/repos/runemadsen/basic-sample/git/commits/6f8446425738363119b968de194065dbbe164245",
+          "html_url": "https://github.com/runemadsen/basic-sample/commits/6f8446425738363119b968de194065dbbe164245",
           "author": {
             "name": "Rune Skjoldborg Madsen",
             "email": "rune@runemadsen.com",
-            "date": "2013-06-27T21:24:55Z"
+            "date": "2013-06-28T13:47:01Z"
           },
           "committer": {
             "name": "Rune Skjoldborg Madsen",
             "email": "rune@runemadsen.com",
-            "date": "2013-06-27T21:24:55Z"
+            "date": "2013-06-28T13:47:01Z"
           },
           "tree": {
-            "sha": "13cc4d7a40fd98d7e456e857bede3011bf12e369",
-            "url": "https://api.github.com/repos/runemadsen/basic-sample/git/trees/13cc4d7a40fd98d7e456e857bede3011bf12e369"
+            "sha": "803bedb7b4b3383a38084a93af60700c9014a463",
+            "url": "https://api.github.com/repos/runemadsen/basic-sample/git/trees/803bedb7b4b3383a38084a93af60700c9014a463"
           },
           "message": "Updating README.md",
           "parents": [
             {
-              "sha": "a9c0694a76a68435395751f87441074028f52516",
-              "url": "https://api.github.com/repos/runemadsen/basic-sample/git/commits/a9c0694a76a68435395751f87441074028f52516",
-              "html_url": "https://github.com/runemadsen/basic-sample/commits/a9c0694a76a68435395751f87441074028f52516"
+              "sha": "d1564287539d685265fe5784e033a846569b1e3d",
+              "url": "https://api.github.com/repos/runemadsen/basic-sample/git/commits/d1564287539d685265fe5784e033a846569b1e3d",
+              "html_url": "https://github.com/runemadsen/basic-sample/commits/d1564287539d685265fe5784e033a846569b1e3d"
             }
           ]
         }
@@ -1185,10 +1185,10 @@ var GHObjects = {
           {
             "mode": "100644",
             "type": "blob",
-            "sha": "9b5dcd420f81e02feb7c1902ea9042ca7a183f11",
+            "sha": "19ea08e0378a096f5c0f4d627248d528c7dffce3",
             "path": "README.md",
-            "size": 31,
-            "url": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/9b5dcd420f81e02feb7c1902ea9042ca7a183f11"
+            "size": 47,
+            "url": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs/19ea08e0378a096f5c0f4d627248d528c7dffce3"
           },
           {
             "mode": "100644",

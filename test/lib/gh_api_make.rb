@@ -4,7 +4,7 @@
 # Run this file like this:
 #
 #   $ bundle # installs the gems directly from GitHub (needed)
-#   $ bundle exec ruby generate_gh_api.rb TOKEN
+#   $ bundle exec ruby gh_api_make.rb TOKEN
 #
 # This will output a bunch of JS into gh_objects.js
 
@@ -69,6 +69,35 @@ def get_hash_with_call_data(response)
   }
 end
 
+def write_test_on_object(obj)
+  output = ""
+  puts "NEW OBJECT"
+  puts obj.class.name
+  puts obj.is_a?(Hash)
+  puts obj.has_key?(:response)
+  puts obj.has_key?(:call)
+  puts ""
+  if(obj.is_a?(Hash) && obj.has_key?(:response) && obj.has_key?(:call))
+    puts "Inside"
+    output += <<-eos
+  it("should stub [#{obj[:call][:method]}] #{obj[:call][:url]}", function()
+  {
+    $.ajax({
+      url: "#{obj[:call][:url]}",
+      type: "#{obj[:call][:method]}"
+    });
+    GHAPI.respond();
+    expect(GHAPI.lastRequest().responseText).toEqual(JSON.stringify(#{obj[:response].to_json}));
+  });
+    eos
+  else
+    obj.each { |k,v|
+      output += write_test_on_object(v);
+    }
+  end
+  output
+end
+
 # Go Baby Go!
 # ---------------------------------------------------------------------------
 
@@ -121,7 +150,53 @@ puts "Loading trees data"
 file_objects[:trees] = {}
 file_objects[:trees][:show] = get_hash_with_call_data(@client.tree(@repo_path, "master"))
 
-puts "Writing to file"
+puts "Writing Objects to File"
 File.open("gh_objects.js", 'w') { |file|
   file.puts "var GHObjects = #{JSON.pretty_generate(file_objects)};"
 }
+
+puts "Writing Tests to File"
+File.open("../spec/gh_api_spec.js", 'w') { |file|
+
+  # write header
+  file.puts <<-eos
+/* GHAPI Stubbing
+------------------------------------------------------------------- */
+
+describe("GHAPI", function() {
+
+  beforeEach(function() {
+    GHAPI.fake(true);
+  });
+
+  afterEach(function() {
+    GHAPI.unfake();
+  });
+  eos
+
+  # write tests
+  output = write_test_on_object(file_objects)
+  file.puts output
+
+  # end header
+  file.puts "});"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
