@@ -52,14 +52,14 @@ describe("User", function() {
 
 	it("should call correct URL in user.repos()", function()
 	{
-  	var u = new GitHub.User(GHResponses.users.show)
+  	var u = new GitHub.User(GHObjects.users.show.response);
   	u.repos();
   	expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/users/runemadsen/repos"));
 	});
 
 	it("should call correct URL in user.organizations()", function()
 	{
-  	var u = new GitHub.User(GHResponses.users.show)
+  	var u = new GitHub.User(GHObjects.users.show.response)
   	u.organizations();
   	expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/users/runemadsen/orgs"));
 	});
