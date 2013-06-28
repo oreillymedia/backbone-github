@@ -387,7 +387,11 @@ GitHub.Content = GitHub.Model.extend({
   url: function()
   {
     repo = this.get('repo');
-    url = repo.url()+'/contents/'+ this.get('path')+'?ref='+this.get('ref');
+    url = repo.url()+'/contents/'+ this.get('path');
+    if(this.get("ref"))
+    {
+      url += '?ref='+this.get('ref');
+    }
     return url;
   }
 
@@ -425,7 +429,7 @@ GitHub.Repo = GitHub.Model.extend({
       success : function(res)
       {
         res.repo = t;
-        res.ref = ref
+        res.ref = ref;
         res.id = res.sha
         var model = _.isArray(res) ? new GitHub.Contents(res) : new GitHub.Content(res);
 
@@ -441,7 +445,7 @@ GitHub.Repo = GitHub.Model.extend({
     GitHub.sync('read', new Backbone.Model(), sync_options)
   },
 
-  create_file : function(ref, path, file_content, message, options)
+  create_file : function(branch, path, file_content, message, options)
   {
     if (!options){
       var options = {};
@@ -453,7 +457,7 @@ GitHub.Repo = GitHub.Model.extend({
       var content = GitHub.Base64.encode(file_content);
 
     var newFile = new GitHub.Content({
-      ref: ref,
+      branch: branch,
       repo : this,
       content: content,
       path: path,
@@ -465,7 +469,7 @@ GitHub.Repo = GitHub.Model.extend({
   },
 
 
-  update_file : function(ref, path, file_content, message, model, options)
+  update_file : function(branch, path, file_content, message, model, options)
   {
     if (!options){
       var options = {};
@@ -476,7 +480,7 @@ GitHub.Repo = GitHub.Model.extend({
     else
       var content = GitHub.Base64.encode(file_content);
 
-    data = {ref:ref, repo:this, content: content, path: path, sha:model.get('sha'), message: message, id: model.cid}
+    data = {branch:branch, repo:this, content: content, path: path, sha:model.get('sha'), message: message, id: model.cid}
     model.save(data, options);
     return model;
   },
