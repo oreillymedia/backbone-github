@@ -37,9 +37,12 @@ var GHAPI = {
 
   fakeRequestOnObject : function(obj)
   {
-    if(obj.response && obj.call)
+    if(obj.response && obj.requests)
     {
-      this.fakeRequest(obj.call.method, obj.call.url, obj.response);
+      for(var i = 0; i < obj.requests.length; i++)
+      {
+        this.fakeRequest(obj.requests[i].method, obj.requests[i].url, obj.response);
+      }
     }
     else
     {
