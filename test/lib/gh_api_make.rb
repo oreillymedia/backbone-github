@@ -3,172 +3,205 @@
 # This file makes it easy to update the fake GHAPI with responses from the actual GitHub API.
 # Run this file like this:
 #
-#   $ bundle # installs the gems directly from GitHub (needed)
-#   $ bundle exec ruby gh_api_make.rb TOKEN
+#   $ ruby gh_api_make.rb TOKEN
 #
 # This will output a bunch of JS into gh_objects.js
 
-require 'octokit'
+# Requires
+# ---------------------------------------------------------------------------
+
+require 'faraday'
+require 'faraday_middleware'
 require 'json'
 require 'base64'
+require 'uri'
 
-module FaradayMiddleware
-  class LogRequest
+# Vars
+# ---------------------------------------------------------------------------
 
-    def self.last_request
-      @@requests.last
-    end
+GH_URL = "https://api.github.com"
+GH_USER = "runemadsen"
+GH_ORG = "oreillymedia"
+GH_REPO = "basic-sample"
 
-    def initialize(app)
-      @app = app
-      @@requests = []
-    end
-
-    def call(env)
-      @@requests << request_hash(env[:method], env[:url].to_s)
-      @app.call(env).on_complete {}
-    end
-  end
+@conn = Faraday.new(:url => GH_URL) do |faraday|
+  faraday.use     FaradayMiddleware::EncodeJson
+  faraday.use     FaradayMiddleware::ParseJson
+  #faraday.request  :json             # form-encode POST params
+  faraday.response :logger                  # log requests to STDOUT
+  faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
 end
-
-Octokit.configure do |c|
-  c.faraday_config { |f| f.use FaradayMiddleware::LogRequest }
-end
-
-@repo_path = "runemadsen/basic-sample"
-@client = Octokit::Client.new(:login => "runemadsen", :oauth_token => ARGV[0])
 
 # Helpers
 # ---------------------------------------------------------------------------
 
-def load_content(hash, path, branch)
-  puts "-> loading #{path} of #{branch}"
-  hash[path] = http_hash(@client.contents(@repo_path, :path => path, :ref => branch))
-  # if is dir
-  if hash[path][:response].is_a? Array
-    hash[path][:response].each do |file|
-      load_content(hash, file.path, branch)
-    end
+def call(req)
+  puts "Calling #{req[:url]}"
+  response = @conn.send(req[:method] || "get") do |fara|
+    fara.url req[:url]
+    fara.body = req[:options]
+    fara.headers['Authorization'] = "token #{ARGV[0]}"
   end
-  hash
+  response.body
 end
 
-def last_request
-  FaradayMiddleware::LogRequest.last_request
+def fill(obj)
+  if obj.is_a?(Hash) && obj.has_key?(:request)
+    obj[:response] = call(obj[:request])
+  elsif obj.is_a?(Hash) && obj.keys.size > 0
+    obj.each { |k,v| fill(v) }
+  end
 end
 
-def request_hash(method, url)
-  {
-    :method => method,
-    :url => url
-  }
-end
-
-def clone_last_request(extras)
-  new_req = Marshal.load(Marshal.dump(last_request))
-  new_req[:url].gsub!(extras[:remove], "") if extras[:remove]
-  new_req[:url] += extras[:add] if extras[:add]
-  new_req[:url] = extras[:replace] if extras[:replace]
-  new_req
-end
-
-def clone_request_without(req, remove)
-  new_req =  Marshal.load(Marshal.dump(req))
-
-  new_req
-end
-
-def http_hash(response)
-  {
-    :response => response,
-    :requests => [last_request]
-  }
-end
-
-def write_test_on_object(obj)
+def test(obj)
   output = ""
-  if(obj.is_a?(Hash) && obj.has_key?(:response) && obj.has_key?(:requests))
-    obj[:requests].each do |http|
+  if obj.is_a?(Hash) && obj.has_key?(:request) && obj.has_key?(:response)
+
+    all_requests = [obj[:request]]
+    all_requests += obj[:stubs] if obj.has_key?(:stubs)
+
+    all_requests.each do |req|
+      absolute_url = URI.join(GH_URL, req[:url])
+      method = req[:method] || "get"
       output += <<-eos
-  it("should stub [#{http[:method]}] #{http[:url]}", function()
+  it("should stub [#{method}] #{absolute_url}", function()
   {
     $.ajax({
-      url: "#{http[:url]}",
-      type: "#{http[:method]}"
+      url: "#{absolute_url}",
+      type: "#{method}"
     });
     GHAPI.respond();
     expect(GHAPI.lastRequest().responseText).toEqual(JSON.stringify(#{obj[:response].to_json}));
   });
       eos
     end
-  else
+
+  elsif obj.is_a?(Hash) &&obj.keys.size > 0
     obj.each { |k,v|
-      output += write_test_on_object(v);
+      output += test(v)
     }
   end
   output
 end
 
-# Go Baby Go!
+def load_content(hash, path, branch)
+  hash[path] = {
+    :request => {
+      :url => "/repos/#{GH_USER}/#{GH_REPO}/contents/#{path}?ref=#{branch}"
+    }
+  }
+  hash[path][:response] = call(hash[path][:request])
+
+  # if is dir
+  if hash[path][:response].is_a? Array
+    hash[path][:response].each do |file|
+      load_content(hash, file["path"], branch)
+    end
+  end
+  hash
+end
+
+# Setup
 # ---------------------------------------------------------------------------
 
-# TODO add all main routes without per_page
+ghobjects = {
+  :users => {
+    :show => {
+      :request => {
+        :url => "/users/#{GH_USER}"
+      },
+      :stubs => [
+        { :url => "/user" }
+      ]
+    }
+  },
+  :orgs => {
+    :index => {
+      :request => {
+        :url => "/users/#{GH_USER}/orgs"
+      },
+      :stubs => [
+        { :url => "/user/orgs" }
+      ]
+    },
+    :show => {
+      :request => {
+        :url => "/orgs/#{GH_ORG}"
+      }
+    }
+  },
+  :repos => {
+    :index => {
+      :request => {
+        :url => "/users/#{GH_USER}/repos?per_page=3"
+      },
+      :stubs => [
+        { :url => "/users/#{GH_USER}/repos" } # THIS SHOULD BE A REGEXP STUBBING ALL PARAMETERS OF THIS CALL
+      ]
+    },
+    :org_index => {
+      :request => {
+        :url => "/orgs/#{GH_ORG}/repos?per_page=3"
+      },
+      :stubs => [
+        { :url => "/orgs/#{GH_ORG}/repos" } # THIS SHOULD BE A REGEXP STUBBING ALL PARAMETERS OF THIS CALL
+      ]
+    },
+    :show => {
+      :request => {
+        :url => "/repos/#{GH_USER}/#{GH_REPO}"
+      }
+    }
+  },
+  :branches => {
+    :index => {
+      :request => {
+        :url => "/repos/#{GH_USER}/#{GH_REPO}/branches"
+      }
+    }
+  },
+  :trees => {
+    :show => {
+      :request => {
+        :url => "/repos/#{GH_USER}/#{GH_REPO}/git/trees/master"
+      }
+    }
+  },
+  :contents => {
+    :show => {
+      # this will load automatically
+    }
+  }
+}
 
-file_objects = {}
+# load all routes
+fill(ghobjects)
 
-puts "Loading user data"
-file_objects[:users] = {}
-file_objects[:users][:show] = http_hash(Octokit.user("runemadsen"))
-
-puts "Loading orgs data"
-file_objects[:orgs] = {}
-file_objects[:orgs][:index] = http_hash(@client.organizations("runemadsen", :per_page => 3))
-file_objects[:orgs][:index][:requests] << clone_last_request(:remove => "?per_page=3")
-file_objects[:orgs][:index][:requests] << clone_last_request(:replace => "https://api.github.com/user/orgs")
-file_objects[:orgs][:show] = http_hash(@client.organization(file_objects[:orgs][:index][:response].first.login))
-
-# TODO: Make sure that basic-sample is in there!
-puts "Loading repo data"
-file_objects[:repos] = {}
-file_objects[:repos][:index] = http_hash(@client.repos("runemadsen", :per_page => 3))
-file_objects[:repos][:index][:requests] << clone_last_request(:replace => "https://api.github.com/user/repos?per_page=1000&type=all&sort=updated")
-file_objects[:repos][:show] = http_hash(@client.repo(@repo_path))
-file_objects[:repos][:org_index] = http_hash(@client.org_repos(file_objects[:orgs][:index][:response].first.login, :per_page => 3))
-
-puts "Loading branches data"
-file_objects[:branches] = {}
-file_objects[:branches][:index] = http_hash(@client.branches(@repo_path))
-
-# List root of all branches and follow down the rabbit hole
+# load contents
 puts "Going down the contents rabbit hole"
-file_objects[:contents] = {}
-file_objects[:contents][:show] = {}
-file_objects[:branches][:index][:response].each do |branch|
-  file_objects[:contents][:show][branch.name] = load_content({}, "/", branch.name)
+ghobjects[:branches][:index][:response].each do |branch|
+  ghobjects[:contents][:show][branch["name"]] = load_content({}, "", branch["name"])
 end
 
 # update a file and save in response
 puts "Updating README.md"
-first_file = file_objects[:contents][:show]["master"]["README.md"][:response]
-file_objects[:contents][:create] = http_hash(
-  @client.update_contents(
-    @repo_path,
-    first_file["path"],
-    "Updating README.md",
-    first_file["sha"],
-    Base64.decode64(first_file.content) + "!",
-    :branch => "master"
-  )
-)
-
-# grab tree of master
-puts "Loading trees data"
-file_objects[:trees] = {}
-file_objects[:trees][:show] = http_hash(@client.tree(@repo_path, "master"))
+readme = ghobjects[:contents][:show]["master"]["README.md"][:response]
+ghobjects[:contents][:create] = {
+  :request => {
+    :url => "/repos/#{GH_USER}/#{GH_REPO}/contents/#{readme["path"]}",
+    :method => "put",
+    :options => {
+      :sha => readme["sha"],
+      :content => Base64.encode64("The time is now #{Time.now}"),
+      :message => "Updating README"
+    }
+  }
+}
+ghobjects[:contents][:create][:response] = call(ghobjects[:contents][:create][:request])
 
 puts "Writing Objects to File"
 File.open("gh_objects.js", 'w') { |file|
-  file.puts "var GHObjects = #{JSON.pretty_generate(file_objects)};"
+  file.puts "var GHObjects = #{JSON.pretty_generate(ghobjects)};"
 }
 
 puts "Writing Tests to File"
@@ -191,8 +224,7 @@ describe("GHAPI", function() {
   eos
 
   # write tests
-  output = write_test_on_object(file_objects)
-  file.puts output
+  file.puts test(ghobjects)
 
   # end header
   file.puts "});"

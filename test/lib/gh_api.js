@@ -37,16 +37,25 @@ var GHAPI = {
 
   fakeRequestOnObject : function(obj)
   {
-    if(obj.response && obj.requests)
+    if(obj.response && obj.request)
     {
-      for(var i = 0; i < obj.requests.length; i++)
+      var all_requests = [obj.request];
+      if(obj.stubs)
       {
-        this.fakeRequest(obj.requests[i].method, obj.requests[i].url, obj.response);
+        for(var i = 0; i < obj.stubs.length; i++)
+        {
+          all_requests.push(obj.stubs[i]);
+        }
+      }
+
+      for(var i = 0; i < all_requests.length; i++)
+      {
+        this.fakeRequest(all_requests[i].method || "get", all_requests[i].url, obj.response);
       }
     }
     else
     {
-      for(var key in obj){
+      for(var key in obj) {
         this.fakeRequestOnObject(obj[key]);
       }
     }
