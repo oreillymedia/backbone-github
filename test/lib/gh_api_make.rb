@@ -141,6 +141,11 @@ ghobjects = {
           :url => "\/users\/#{GH_USER}\/repos\?",
           :regexp => true,
           :test => "/users/#{GH_USER}/repos?does=this&regexp=work"
+        },
+        {
+          :url => "\/user\/repos\?",
+          :regexp => true,
+          :test => "/user/repos?does=this&regexp=work"
         }
       ]
     },
@@ -165,6 +170,13 @@ ghobjects = {
     :index => {
       :request => {
         :url => "/repos/#{GH_USER}/#{GH_REPO}/branches"
+      }
+    }
+  },
+  :collaborators => {
+    :index => {
+      :request => {
+        :url => "/repos/#{GH_USER}/#{GH_REPO}/collaborators"
       }
     }
   },

@@ -30,11 +30,11 @@ var GHObjects = {
         "followers": 0,
         "following": 0,
         "created_at": "2012-09-05T13:22:09Z",
-        "updated_at": "2013-07-01T16:52:50Z",
+        "updated_at": "2013-07-01T17:38:12Z",
         "public_gists": 0,
         "total_private_repos": 0,
         "owned_private_repos": 0,
-        "disk_usage": 0,
+        "disk_usage": 148,
         "collaborators": 0,
         "plan": {
           "name": "free",
@@ -94,12 +94,12 @@ var GHObjects = {
         "following": 0,
         "html_url": "https://github.com/oreillymedia",
         "created_at": "2010-08-31T20:42:21Z",
-        "updated_at": "2013-07-01T16:40:41Z",
+        "updated_at": "2013-07-01T17:39:20Z",
         "type": "Organization",
         "total_private_repos": 72,
         "owned_private_repos": 72,
         "private_gists": 0,
-        "disk_usage": 9201128,
+        "disk_usage": 9201240,
         "collaborators": 0,
         "billing_email": "developers@oreilly.com",
         "plan": {
@@ -120,6 +120,11 @@ var GHObjects = {
           "url": "/users/atlasservers/repos?",
           "regexp": true,
           "test": "/users/atlasservers/repos?does=this&regexp=work"
+        },
+        {
+          "url": "/user/repos?",
+          "regexp": true,
+          "test": "/user/repos?does=this&regexp=work"
         }
       ],
       "response": [
@@ -237,7 +242,7 @@ var GHObjects = {
           "private": false,
           "html_url": "https://github.com/atlasservers/basic-sample",
           "description": "A repo used to test the GitHub API",
-          "fork": true,
+          "fork": false,
           "url": "https://api.github.com/repos/atlasservers/basic-sample",
           "forks_url": "https://api.github.com/repos/atlasservers/basic-sample/forks",
           "keys_url": "https://api.github.com/repos/atlasservers/basic-sample/keys{/key_id}",
@@ -274,14 +279,14 @@ var GHObjects = {
           "notifications_url": "https://api.github.com/repos/atlasservers/basic-sample/notifications{?since,all,participating}",
           "labels_url": "https://api.github.com/repos/atlasservers/basic-sample/labels{/name}",
           "created_at": "2013-07-01T16:52:17Z",
-          "updated_at": "2013-07-01T16:52:18Z",
-          "pushed_at": "2013-07-01T16:49:38Z",
+          "updated_at": "2013-07-01T17:38:12Z",
+          "pushed_at": "2013-07-01T17:38:11Z",
           "git_url": "git://github.com/atlasservers/basic-sample.git",
           "ssh_url": "git@github.com:atlasservers/basic-sample.git",
           "clone_url": "https://github.com/atlasservers/basic-sample.git",
           "svn_url": "https://github.com/atlasservers/basic-sample",
           "homepage": null,
-          "size": 1028,
+          "size": 148,
           "watchers_count": 0,
           "language": null,
           "has_issues": false,
@@ -612,7 +617,7 @@ var GHObjects = {
         "private": false,
         "html_url": "https://github.com/atlasservers/basic-sample",
         "description": "A repo used to test the GitHub API",
-        "fork": true,
+        "fork": false,
         "url": "https://api.github.com/repos/atlasservers/basic-sample",
         "forks_url": "https://api.github.com/repos/atlasservers/basic-sample/forks",
         "keys_url": "https://api.github.com/repos/atlasservers/basic-sample/keys{/key_id}",
@@ -649,14 +654,14 @@ var GHObjects = {
         "notifications_url": "https://api.github.com/repos/atlasservers/basic-sample/notifications{?since,all,participating}",
         "labels_url": "https://api.github.com/repos/atlasservers/basic-sample/labels{/name}",
         "created_at": "2013-07-01T16:52:17Z",
-        "updated_at": "2013-07-01T16:52:18Z",
-        "pushed_at": "2013-07-01T16:49:38Z",
+        "updated_at": "2013-07-01T17:38:12Z",
+        "pushed_at": "2013-07-01T17:38:11Z",
         "git_url": "git://github.com/atlasservers/basic-sample.git",
         "ssh_url": "git@github.com:atlasservers/basic-sample.git",
         "clone_url": "https://github.com/atlasservers/basic-sample.git",
         "svn_url": "https://github.com/atlasservers/basic-sample",
         "homepage": null,
-        "size": 1028,
+        "size": 148,
         "watchers_count": 0,
         "language": null,
         "has_issues": false,
@@ -675,175 +680,7 @@ var GHObjects = {
           "push": true,
           "pull": true
         },
-        "network_count": 1,
-        "parent": {
-          "id": 10998418,
-          "name": "basic-sample",
-          "full_name": "runemadsen/basic-sample",
-          "owner": {
-            "login": "runemadsen",
-            "id": 192021,
-            "avatar_url": "https://secure.gravatar.com/avatar/63682d2534602863b9b8277edcff374c?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
-            "gravatar_id": "63682d2534602863b9b8277edcff374c",
-            "url": "https://api.github.com/users/runemadsen",
-            "html_url": "https://github.com/runemadsen",
-            "followers_url": "https://api.github.com/users/runemadsen/followers",
-            "following_url": "https://api.github.com/users/runemadsen/following{/other_user}",
-            "gists_url": "https://api.github.com/users/runemadsen/gists{/gist_id}",
-            "starred_url": "https://api.github.com/users/runemadsen/starred{/owner}{/repo}",
-            "subscriptions_url": "https://api.github.com/users/runemadsen/subscriptions",
-            "organizations_url": "https://api.github.com/users/runemadsen/orgs",
-            "repos_url": "https://api.github.com/users/runemadsen/repos",
-            "events_url": "https://api.github.com/users/runemadsen/events{/privacy}",
-            "received_events_url": "https://api.github.com/users/runemadsen/received_events",
-            "type": "User"
-          },
-          "private": false,
-          "html_url": "https://github.com/runemadsen/basic-sample",
-          "description": "A repo used to test the GitHub API",
-          "fork": false,
-          "url": "https://api.github.com/repos/runemadsen/basic-sample",
-          "forks_url": "https://api.github.com/repos/runemadsen/basic-sample/forks",
-          "keys_url": "https://api.github.com/repos/runemadsen/basic-sample/keys{/key_id}",
-          "collaborators_url": "https://api.github.com/repos/runemadsen/basic-sample/collaborators{/collaborator}",
-          "teams_url": "https://api.github.com/repos/runemadsen/basic-sample/teams",
-          "hooks_url": "https://api.github.com/repos/runemadsen/basic-sample/hooks",
-          "issue_events_url": "https://api.github.com/repos/runemadsen/basic-sample/issues/events{/number}",
-          "events_url": "https://api.github.com/repos/runemadsen/basic-sample/events",
-          "assignees_url": "https://api.github.com/repos/runemadsen/basic-sample/assignees{/user}",
-          "branches_url": "https://api.github.com/repos/runemadsen/basic-sample/branches{/branch}",
-          "tags_url": "https://api.github.com/repos/runemadsen/basic-sample/tags",
-          "blobs_url": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs{/sha}",
-          "git_tags_url": "https://api.github.com/repos/runemadsen/basic-sample/git/tags{/sha}",
-          "git_refs_url": "https://api.github.com/repos/runemadsen/basic-sample/git/refs{/sha}",
-          "trees_url": "https://api.github.com/repos/runemadsen/basic-sample/git/trees{/sha}",
-          "statuses_url": "https://api.github.com/repos/runemadsen/basic-sample/statuses/{sha}",
-          "languages_url": "https://api.github.com/repos/runemadsen/basic-sample/languages",
-          "stargazers_url": "https://api.github.com/repos/runemadsen/basic-sample/stargazers",
-          "contributors_url": "https://api.github.com/repos/runemadsen/basic-sample/contributors",
-          "subscribers_url": "https://api.github.com/repos/runemadsen/basic-sample/subscribers",
-          "subscription_url": "https://api.github.com/repos/runemadsen/basic-sample/subscription",
-          "commits_url": "https://api.github.com/repos/runemadsen/basic-sample/commits{/sha}",
-          "git_commits_url": "https://api.github.com/repos/runemadsen/basic-sample/git/commits{/sha}",
-          "comments_url": "https://api.github.com/repos/runemadsen/basic-sample/comments{/number}",
-          "issue_comment_url": "https://api.github.com/repos/runemadsen/basic-sample/issues/comments/{number}",
-          "contents_url": "https://api.github.com/repos/runemadsen/basic-sample/contents/{+path}",
-          "compare_url": "https://api.github.com/repos/runemadsen/basic-sample/compare/{base}...{head}",
-          "merges_url": "https://api.github.com/repos/runemadsen/basic-sample/merges",
-          "archive_url": "https://api.github.com/repos/runemadsen/basic-sample/{archive_format}{/ref}",
-          "downloads_url": "https://api.github.com/repos/runemadsen/basic-sample/downloads",
-          "issues_url": "https://api.github.com/repos/runemadsen/basic-sample/issues{/number}",
-          "pulls_url": "https://api.github.com/repos/runemadsen/basic-sample/pulls{/number}",
-          "milestones_url": "https://api.github.com/repos/runemadsen/basic-sample/milestones{/number}",
-          "notifications_url": "https://api.github.com/repos/runemadsen/basic-sample/notifications{?since,all,participating}",
-          "labels_url": "https://api.github.com/repos/runemadsen/basic-sample/labels{/name}",
-          "created_at": "2013-06-27T14:07:08Z",
-          "updated_at": "2013-07-01T16:52:17Z",
-          "pushed_at": "2013-07-01T16:49:38Z",
-          "git_url": "git://github.com/runemadsen/basic-sample.git",
-          "ssh_url": "git@github.com:runemadsen/basic-sample.git",
-          "clone_url": "https://github.com/runemadsen/basic-sample.git",
-          "svn_url": "https://github.com/runemadsen/basic-sample",
-          "homepage": null,
-          "size": 1028,
-          "watchers_count": 0,
-          "language": null,
-          "has_issues": true,
-          "has_downloads": true,
-          "has_wiki": true,
-          "forks_count": 1,
-          "mirror_url": null,
-          "open_issues_count": 0,
-          "forks": 1,
-          "open_issues": 0,
-          "watchers": 0,
-          "master_branch": "master",
-          "default_branch": "master"
-        },
-        "source": {
-          "id": 10998418,
-          "name": "basic-sample",
-          "full_name": "runemadsen/basic-sample",
-          "owner": {
-            "login": "runemadsen",
-            "id": 192021,
-            "avatar_url": "https://secure.gravatar.com/avatar/63682d2534602863b9b8277edcff374c?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
-            "gravatar_id": "63682d2534602863b9b8277edcff374c",
-            "url": "https://api.github.com/users/runemadsen",
-            "html_url": "https://github.com/runemadsen",
-            "followers_url": "https://api.github.com/users/runemadsen/followers",
-            "following_url": "https://api.github.com/users/runemadsen/following{/other_user}",
-            "gists_url": "https://api.github.com/users/runemadsen/gists{/gist_id}",
-            "starred_url": "https://api.github.com/users/runemadsen/starred{/owner}{/repo}",
-            "subscriptions_url": "https://api.github.com/users/runemadsen/subscriptions",
-            "organizations_url": "https://api.github.com/users/runemadsen/orgs",
-            "repos_url": "https://api.github.com/users/runemadsen/repos",
-            "events_url": "https://api.github.com/users/runemadsen/events{/privacy}",
-            "received_events_url": "https://api.github.com/users/runemadsen/received_events",
-            "type": "User"
-          },
-          "private": false,
-          "html_url": "https://github.com/runemadsen/basic-sample",
-          "description": "A repo used to test the GitHub API",
-          "fork": false,
-          "url": "https://api.github.com/repos/runemadsen/basic-sample",
-          "forks_url": "https://api.github.com/repos/runemadsen/basic-sample/forks",
-          "keys_url": "https://api.github.com/repos/runemadsen/basic-sample/keys{/key_id}",
-          "collaborators_url": "https://api.github.com/repos/runemadsen/basic-sample/collaborators{/collaborator}",
-          "teams_url": "https://api.github.com/repos/runemadsen/basic-sample/teams",
-          "hooks_url": "https://api.github.com/repos/runemadsen/basic-sample/hooks",
-          "issue_events_url": "https://api.github.com/repos/runemadsen/basic-sample/issues/events{/number}",
-          "events_url": "https://api.github.com/repos/runemadsen/basic-sample/events",
-          "assignees_url": "https://api.github.com/repos/runemadsen/basic-sample/assignees{/user}",
-          "branches_url": "https://api.github.com/repos/runemadsen/basic-sample/branches{/branch}",
-          "tags_url": "https://api.github.com/repos/runemadsen/basic-sample/tags",
-          "blobs_url": "https://api.github.com/repos/runemadsen/basic-sample/git/blobs{/sha}",
-          "git_tags_url": "https://api.github.com/repos/runemadsen/basic-sample/git/tags{/sha}",
-          "git_refs_url": "https://api.github.com/repos/runemadsen/basic-sample/git/refs{/sha}",
-          "trees_url": "https://api.github.com/repos/runemadsen/basic-sample/git/trees{/sha}",
-          "statuses_url": "https://api.github.com/repos/runemadsen/basic-sample/statuses/{sha}",
-          "languages_url": "https://api.github.com/repos/runemadsen/basic-sample/languages",
-          "stargazers_url": "https://api.github.com/repos/runemadsen/basic-sample/stargazers",
-          "contributors_url": "https://api.github.com/repos/runemadsen/basic-sample/contributors",
-          "subscribers_url": "https://api.github.com/repos/runemadsen/basic-sample/subscribers",
-          "subscription_url": "https://api.github.com/repos/runemadsen/basic-sample/subscription",
-          "commits_url": "https://api.github.com/repos/runemadsen/basic-sample/commits{/sha}",
-          "git_commits_url": "https://api.github.com/repos/runemadsen/basic-sample/git/commits{/sha}",
-          "comments_url": "https://api.github.com/repos/runemadsen/basic-sample/comments{/number}",
-          "issue_comment_url": "https://api.github.com/repos/runemadsen/basic-sample/issues/comments/{number}",
-          "contents_url": "https://api.github.com/repos/runemadsen/basic-sample/contents/{+path}",
-          "compare_url": "https://api.github.com/repos/runemadsen/basic-sample/compare/{base}...{head}",
-          "merges_url": "https://api.github.com/repos/runemadsen/basic-sample/merges",
-          "archive_url": "https://api.github.com/repos/runemadsen/basic-sample/{archive_format}{/ref}",
-          "downloads_url": "https://api.github.com/repos/runemadsen/basic-sample/downloads",
-          "issues_url": "https://api.github.com/repos/runemadsen/basic-sample/issues{/number}",
-          "pulls_url": "https://api.github.com/repos/runemadsen/basic-sample/pulls{/number}",
-          "milestones_url": "https://api.github.com/repos/runemadsen/basic-sample/milestones{/number}",
-          "notifications_url": "https://api.github.com/repos/runemadsen/basic-sample/notifications{?since,all,participating}",
-          "labels_url": "https://api.github.com/repos/runemadsen/basic-sample/labels{/name}",
-          "created_at": "2013-06-27T14:07:08Z",
-          "updated_at": "2013-07-01T16:52:17Z",
-          "pushed_at": "2013-07-01T16:49:38Z",
-          "git_url": "git://github.com/runemadsen/basic-sample.git",
-          "ssh_url": "git@github.com:runemadsen/basic-sample.git",
-          "clone_url": "https://github.com/runemadsen/basic-sample.git",
-          "svn_url": "https://github.com/runemadsen/basic-sample",
-          "homepage": null,
-          "size": 1028,
-          "watchers_count": 0,
-          "language": null,
-          "has_issues": true,
-          "has_downloads": true,
-          "has_wiki": true,
-          "forks_count": 1,
-          "mirror_url": null,
-          "open_issues_count": 0,
-          "forks": 1,
-          "open_issues": 0,
-          "watchers": 0,
-          "master_branch": "master",
-          "default_branch": "master"
-        }
+        "network_count": 0
       }
     }
   },
@@ -856,8 +693,8 @@ var GHObjects = {
         {
           "name": "master",
           "commit": {
-            "sha": "e9d8067bcd90e91f1130d64d4b07f77ae4429513",
-            "url": "https://api.github.com/repos/atlasservers/basic-sample/commits/e9d8067bcd90e91f1130d64d4b07f77ae4429513"
+            "sha": "9a50542539d9e7a3197d7214210140bedf14a6dd",
+            "url": "https://api.github.com/repos/atlasservers/basic-sample/commits/9a50542539d9e7a3197d7214210140bedf14a6dd"
           }
         },
         {
@@ -866,6 +703,69 @@ var GHObjects = {
             "sha": "015cd52c87ec34a4f6b48162113faffdd79c031f",
             "url": "https://api.github.com/repos/atlasservers/basic-sample/commits/015cd52c87ec34a4f6b48162113faffdd79c031f"
           }
+        }
+      ]
+    }
+  },
+  "collaborators": {
+    "index": {
+      "request": {
+        "url": "/repos/atlasservers/basic-sample/collaborators"
+      },
+      "response": [
+        {
+          "login": "atlasservers",
+          "id": 2284965,
+          "avatar_url": "https://secure.gravatar.com/avatar/33ae9fd93e4d5c771c1bab29c8705106?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+          "gravatar_id": "33ae9fd93e4d5c771c1bab29c8705106",
+          "url": "https://api.github.com/users/atlasservers",
+          "html_url": "https://github.com/atlasservers",
+          "followers_url": "https://api.github.com/users/atlasservers/followers",
+          "following_url": "https://api.github.com/users/atlasservers/following{/other_user}",
+          "gists_url": "https://api.github.com/users/atlasservers/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/atlasservers/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/atlasservers/subscriptions",
+          "organizations_url": "https://api.github.com/users/atlasservers/orgs",
+          "repos_url": "https://api.github.com/users/atlasservers/repos",
+          "events_url": "https://api.github.com/users/atlasservers/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/atlasservers/received_events",
+          "type": "User"
+        },
+        {
+          "login": "zischwartz",
+          "id": 77472,
+          "avatar_url": "https://secure.gravatar.com/avatar/d626261ef237ec7bfbc6debb5aa9d33d?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+          "gravatar_id": "d626261ef237ec7bfbc6debb5aa9d33d",
+          "url": "https://api.github.com/users/zischwartz",
+          "html_url": "https://github.com/zischwartz",
+          "followers_url": "https://api.github.com/users/zischwartz/followers",
+          "following_url": "https://api.github.com/users/zischwartz/following{/other_user}",
+          "gists_url": "https://api.github.com/users/zischwartz/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/zischwartz/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/zischwartz/subscriptions",
+          "organizations_url": "https://api.github.com/users/zischwartz/orgs",
+          "repos_url": "https://api.github.com/users/zischwartz/repos",
+          "events_url": "https://api.github.com/users/zischwartz/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/zischwartz/received_events",
+          "type": "User"
+        },
+        {
+          "login": "runemadsen",
+          "id": 192021,
+          "avatar_url": "https://secure.gravatar.com/avatar/63682d2534602863b9b8277edcff374c?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+          "gravatar_id": "63682d2534602863b9b8277edcff374c",
+          "url": "https://api.github.com/users/runemadsen",
+          "html_url": "https://github.com/runemadsen",
+          "followers_url": "https://api.github.com/users/runemadsen/followers",
+          "following_url": "https://api.github.com/users/runemadsen/following{/other_user}",
+          "gists_url": "https://api.github.com/users/runemadsen/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/runemadsen/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/runemadsen/subscriptions",
+          "organizations_url": "https://api.github.com/users/runemadsen/orgs",
+          "repos_url": "https://api.github.com/users/runemadsen/repos",
+          "events_url": "https://api.github.com/users/runemadsen/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/runemadsen/received_events",
+          "type": "User"
         }
       ]
     }
@@ -882,10 +782,10 @@ var GHObjects = {
           {
             "mode": "100644",
             "type": "blob",
-            "sha": "367af4d71d3acf3ba2d4ea93d9827b66aa2499eb",
+            "sha": "f391b17382d0248d0a891402ea036c917c0d32a2",
             "path": "README.md",
             "size": 41,
-            "url": "https://api.github.com/repos/atlasservers/basic-sample/git/blobs/367af4d71d3acf3ba2d4ea93d9827b66aa2499eb"
+            "url": "https://api.github.com/repos/atlasservers/basic-sample/git/blobs/f391b17382d0248d0a891402ea036c917c0d32a2"
           },
           {
             "mode": "100644",
@@ -917,15 +817,15 @@ var GHObjects = {
             {
               "name": "README.md",
               "path": "README.md",
-              "sha": "367af4d71d3acf3ba2d4ea93d9827b66aa2499eb",
+              "sha": "f391b17382d0248d0a891402ea036c917c0d32a2",
               "size": 41,
               "url": "https://api.github.com/repos/atlasservers/basic-sample/contents/README.md?ref=master",
               "html_url": "https://github.com/atlasservers/basic-sample/blob/master/README.md",
-              "git_url": "https://api.github.com/repos/atlasservers/basic-sample/git/blobs/367af4d71d3acf3ba2d4ea93d9827b66aa2499eb",
+              "git_url": "https://api.github.com/repos/atlasservers/basic-sample/git/blobs/f391b17382d0248d0a891402ea036c917c0d32a2",
               "type": "file",
               "_links": {
                 "self": "https://api.github.com/repos/atlasservers/basic-sample/contents/README.md?ref=master",
-                "git": "https://api.github.com/repos/atlasservers/basic-sample/git/blobs/367af4d71d3acf3ba2d4ea93d9827b66aa2499eb",
+                "git": "https://api.github.com/repos/atlasservers/basic-sample/git/blobs/f391b17382d0248d0a891402ea036c917c0d32a2",
                 "html": "https://github.com/atlasservers/basic-sample/blob/master/README.md"
               }
             },
@@ -968,17 +868,17 @@ var GHObjects = {
           "response": {
             "name": "README.md",
             "path": "README.md",
-            "sha": "367af4d71d3acf3ba2d4ea93d9827b66aa2499eb",
+            "sha": "f391b17382d0248d0a891402ea036c917c0d32a2",
             "size": 41,
             "url": "https://api.github.com/repos/atlasservers/basic-sample/contents/README.md?ref=master",
             "html_url": "https://github.com/atlasservers/basic-sample/blob/master/README.md",
-            "git_url": "https://api.github.com/repos/atlasservers/basic-sample/git/blobs/367af4d71d3acf3ba2d4ea93d9827b66aa2499eb",
+            "git_url": "https://api.github.com/repos/atlasservers/basic-sample/git/blobs/f391b17382d0248d0a891402ea036c917c0d32a2",
             "type": "file",
-            "content": "VGhlIHRpbWUgaXMgbm93IDIwMTMtMDctMDEgMTI6NDk6MzkgLTA0MDA=\n",
+            "content": "VGhlIHRpbWUgaXMgbm93IDIwMTMtMDctMDEgMTM6Mzg6MTUgLTA0MDA=\n",
             "encoding": "base64",
             "_links": {
               "self": "https://api.github.com/repos/atlasservers/basic-sample/contents/README.md?ref=master",
-              "git": "https://api.github.com/repos/atlasservers/basic-sample/git/blobs/367af4d71d3acf3ba2d4ea93d9827b66aa2499eb",
+              "git": "https://api.github.com/repos/atlasservers/basic-sample/git/blobs/f391b17382d0248d0a891402ea036c917c0d32a2",
               "html": "https://github.com/atlasservers/basic-sample/blob/master/README.md"
             }
           }
@@ -1235,8 +1135,8 @@ var GHObjects = {
         "url": "/repos/atlasservers/basic-sample/contents/README.md",
         "method": "put",
         "options": {
-          "sha": "367af4d71d3acf3ba2d4ea93d9827b66aa2499eb",
-          "content": "VGhlIHRpbWUgaXMgbm93IDIwMTMtMDctMDEgMTI6NTQ6MjEgLTA0MDA=\n",
+          "sha": "f391b17382d0248d0a891402ea036c917c0d32a2",
+          "content": "VGhlIHRpbWUgaXMgbm93IDIwMTMtMDctMDEgMTM6NDk6MDQgLTA0MDA=\n",
           "message": "Updating README"
         }
       },
@@ -1244,42 +1144,42 @@ var GHObjects = {
         "content": {
           "name": "README.md",
           "path": "README.md",
-          "sha": "515dccb86fcbe2e40c2076959be8004450c2ab09",
+          "sha": "672c0d953fc7a0958f61e0a1fb7a3d342a113411",
           "size": 41,
           "url": "https://api.github.com/repos/atlasservers/basic-sample/contents/README.md?ref=master",
           "html_url": "https://github.com/atlasservers/basic-sample/blob/master/README.md",
-          "git_url": "https://api.github.com/repos/atlasservers/basic-sample/git/blobs/515dccb86fcbe2e40c2076959be8004450c2ab09",
+          "git_url": "https://api.github.com/repos/atlasservers/basic-sample/git/blobs/672c0d953fc7a0958f61e0a1fb7a3d342a113411",
           "type": "file",
           "_links": {
             "self": "https://api.github.com/repos/atlasservers/basic-sample/contents/README.md?ref=master",
-            "git": "https://api.github.com/repos/atlasservers/basic-sample/git/blobs/515dccb86fcbe2e40c2076959be8004450c2ab09",
+            "git": "https://api.github.com/repos/atlasservers/basic-sample/git/blobs/672c0d953fc7a0958f61e0a1fb7a3d342a113411",
             "html": "https://github.com/atlasservers/basic-sample/blob/master/README.md"
           }
         },
         "commit": {
-          "sha": "e4a46b983ad495fdb1607760a013b1095d3e8a62",
-          "url": "https://api.github.com/repos/atlasservers/basic-sample/git/commits/e4a46b983ad495fdb1607760a013b1095d3e8a62",
-          "html_url": "https://github.com/atlasservers/basic-sample/commits/e4a46b983ad495fdb1607760a013b1095d3e8a62",
+          "sha": "f6e9e9112585d567785caf582a7b9c85de02f394",
+          "url": "https://api.github.com/repos/atlasservers/basic-sample/git/commits/f6e9e9112585d567785caf582a7b9c85de02f394",
+          "html_url": "https://github.com/atlasservers/basic-sample/commits/f6e9e9112585d567785caf582a7b9c85de02f394",
           "author": {
             "name": "atlasservers",
             "email": "runeskjoldborgmadsen@gmail.com",
-            "date": "2013-07-01T16:54:19Z"
+            "date": "2013-07-01T17:48:59Z"
           },
           "committer": {
             "name": "atlasservers",
             "email": "runeskjoldborgmadsen@gmail.com",
-            "date": "2013-07-01T16:54:19Z"
+            "date": "2013-07-01T17:48:59Z"
           },
           "tree": {
-            "sha": "3de818a52eff39f2b2ab5f87ddcc48880d10e672",
-            "url": "https://api.github.com/repos/atlasservers/basic-sample/git/trees/3de818a52eff39f2b2ab5f87ddcc48880d10e672"
+            "sha": "3bb216af8f6e9460aaff6550b310334e8b8ae40b",
+            "url": "https://api.github.com/repos/atlasservers/basic-sample/git/trees/3bb216af8f6e9460aaff6550b310334e8b8ae40b"
           },
           "message": "Updating README",
           "parents": [
             {
-              "sha": "e9d8067bcd90e91f1130d64d4b07f77ae4429513",
-              "url": "https://api.github.com/repos/atlasservers/basic-sample/git/commits/e9d8067bcd90e91f1130d64d4b07f77ae4429513",
-              "html_url": "https://github.com/atlasservers/basic-sample/commits/e9d8067bcd90e91f1130d64d4b07f77ae4429513"
+              "sha": "9a50542539d9e7a3197d7214210140bedf14a6dd",
+              "url": "https://api.github.com/repos/atlasservers/basic-sample/git/commits/9a50542539d9e7a3197d7214210140bedf14a6dd",
+              "html_url": "https://github.com/atlasservers/basic-sample/commits/9a50542539d9e7a3197d7214210140bedf14a6dd"
             }
           ]
         }
