@@ -13,53 +13,53 @@ describe("Repo", function() {
 
   it("should have backboneClass", function()
   {
-    var r = new GitHub.Repo({full_name:"runemadsen/basic-sample"});
+    var r = new GitHub.Repo({full_name:"atlasservers/basic-sample"});
     expect(r.backboneClass).toEqual("Repo");
   });
 
 	it("should call correct URL in Repo.fetch()", function()
 	{
-  	GitHub.Repo.fetch('runemadsen', 'basic-sample');
-  	expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/basic-sample"));
+  	GitHub.Repo.fetch('atlasservers', 'basic-sample');
+  	expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/atlasservers/basic-sample"));
 	});
 
   it("should call correct URL in Repo.fetch() with only full_name", function()
   {
-    var r = new GitHub.Repo({full_name:"runemadsen/basic-sample"})
+    var r = new GitHub.Repo({full_name:"atlasservers/basic-sample"})
     r.fetch();
-    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/basic-sample"));
+    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/atlasservers/basic-sample"));
   });
 
   it("should call correct URL in Repo.fetch() with only url", function()
   {
-    var r = new GitHub.Repo({url:GHAPI.url("/repos/runemadsen/basic-sample")});
+    var r = new GitHub.Repo({url:GHAPI.url("/repos/atlasservers/basic-sample")});
     r.fetch();
-    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/basic-sample"));
+    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/atlasservers/basic-sample"));
   });
 
   it("should call correct URL in Repo.fetch() with only login and name", function()
   {
-    var r = new GitHub.Repo({owner:{login:"runemadsen"}, name:"basic-sample"})
+    var r = new GitHub.Repo({owner:{login:"atlasservers"}, name:"basic-sample"})
     r.fetch();
-    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/basic-sample"));
+    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/atlasservers/basic-sample"));
   });
 
   it("should fetch a tree from the given sha", function() {
     var r = Helpers.get_repo();
     r.tree("master");
-    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/basic-sample/git/trees/master"));
+    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/atlasservers/basic-sample/git/trees/master"));
   })
 
   it("should fetch collaborators", function() {
     var r = Helpers.get_repo();
     r.collaborators();
-    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/basic-sample/collaborators"));
+    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/atlasservers/basic-sample/collaborators"));
   })
 
   it("should fetch branches", function() {
     var r = Helpers.get_repo();
     r.branches()
-    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/basic-sample/branches"));
+    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/atlasservers/basic-sample/branches"));
   });
 
 });
@@ -80,14 +80,14 @@ describe("GitHub.repo.contents()", function() {
   it("should call correct URL in Repo.contents()", function()
   {
     r.contents("master", "subfolder/SUBME.md")
-    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/basic-sample/contents/subfolder/SUBME.md?ref=master"));
+    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/atlasservers/basic-sample/contents/subfolder/SUBME.md?ref=master"));
   });
 
   it("should call correct URL in Repo.create_file()", function()
   {
     file_content = "Hello World!!!"
     r.create_file('master', "subfolder/SUBME.md", file_content)
-    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/basic-sample/contents/subfolder/SUBME.md"));
+    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/atlasservers/basic-sample/contents/subfolder/SUBME.md"));
     expect(GHAPI.lastRequest().method).toEqual("PUT");
     response = JSON.parse(GHAPI.lastRequest().requestBody);
     expect(response.content).toEqual(GitHub.Base64.encode(file_content));
@@ -154,7 +154,7 @@ describe('Github.repo.create_file', function(){
     file_content = "Hello World!!!";
     commit_message = 'added file.txt';
     r.create_file('master', "subfolder/SUBME.md", file_content, commit_message);
-    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/basic-sample/contents/subfolder/SUBME.md"));
+    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/atlasservers/basic-sample/contents/subfolder/SUBME.md"));
     expect(GHAPI.lastRequest().method).toEqual("PUT");
     response = JSON.parse(GHAPI.lastRequest().requestBody);
     expect(response.message).toEqual(commit_message);
@@ -205,7 +205,7 @@ describe('Github.repo.create_file', function(){
     file_content = "bye bye"
     result.cook(file_content); //need to base64
     result.save();
-    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/runemadsen/basic-sample/contents/subfolder/SUBME.md?ref=master"));
+    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/atlasservers/basic-sample/contents/subfolder/SUBME.md?ref=master"));
     expect(GHAPI.lastRequest().method).toEqual("PUT");
     content = JSON.parse(GHAPI.lastRequest().requestBody).content;
     expect(content).toEqual(GitHub.Base64.encode(file_content));

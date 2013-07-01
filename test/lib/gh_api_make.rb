@@ -5,6 +5,7 @@
 #
 #   $ ruby gh_api_make.rb TOKEN
 #
+# The token needs to be the token of the atlasservers user on GitHub
 # This will output a bunch of JS into gh_objects.js
 
 # Requires
@@ -20,7 +21,7 @@ require 'uri'
 # ---------------------------------------------------------------------------
 
 GH_URL = "https://api.github.com"
-GH_USER = "runemadsen"
+GH_USER = "atlasservers"
 GH_ORG = "oreillymedia"
 GH_REPO = "basic-sample"
 

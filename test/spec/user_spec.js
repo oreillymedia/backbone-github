@@ -46,22 +46,22 @@ describe("User", function() {
 
 	it("should call correct URL in User.fetch()", function()
 	{
-  	GitHub.User.fetch('runemadsen');
-  	expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/users/runemadsen"));
+  	GitHub.User.fetch('atlasservers');
+  	expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/users/atlasservers"));
 	});
 
 	it("should call correct URL in user.repos()", function()
 	{
   	var u = new GitHub.User(GHObjects.users.show.response);
   	u.repos();
-  	expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/users/runemadsen/repos"));
+  	expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/users/atlasservers/repos"));
 	});
 
 	it("should call correct URL in user.organizations()", function()
 	{
   	var u = new GitHub.User(GHObjects.users.show.response)
   	u.organizations();
-  	expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/users/runemadsen/orgs"));
+  	expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/users/atlasservers/orgs"));
 	});
 
 });
