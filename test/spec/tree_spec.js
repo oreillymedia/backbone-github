@@ -6,8 +6,12 @@ describe("Tree", function() {
 	it("should parse data into collections on initialize", function()
 	{
   	var tree = new GitHub.Tree(GHObjects.trees.show.response)
-    expect(tree.trees.length).toBe(1)
-    expect(tree.blobs.length).toBe(2)
+    expect(tree.trees.length).toBe(_.filter(GHObjects.trees.show.response, function(obj) {
+      return obj.type == "tree"
+    }).length);
+    expect(tree.blobs.length).toBe(_.filter(GHObjects.trees.show.response, function(obj) {
+      return obj.type == "blob"
+    }).length))
 	});
 
   it("should use url attribute if it has one", function()
@@ -23,8 +27,12 @@ describe("Tree", function() {
     var tree = new GitHub.Tree({sha:"master", repo:Helpers.get_repo()});
     tree.fetch();
     GHAPI.respond();
-    expect(tree.trees.length).toBe(1)
-    expect(tree.blobs.length).toBe(2)
+    expect(tree.trees.length).toBe(_.filter(GHObjects.trees.show.response, function(obj) {
+      return obj.type == "tree"
+    }).length))
+    expect(tree.blobs.length).toBe(_.filter(GHObjects.trees.show.response, function(obj) {
+      return obj.type == "blob"
+    }).length))
     GHAPI.unfake();
   });
 
