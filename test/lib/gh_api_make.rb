@@ -27,8 +27,7 @@ GH_REPO = "basic-sample"
 @conn = Faraday.new(:url => GH_URL) do |faraday|
   faraday.use     FaradayMiddleware::EncodeJson
   faraday.use     FaradayMiddleware::ParseJson
-  #faraday.request  :json             # form-encode POST params
-  faraday.response :logger                  # log requests to STDOUT
+  #faraday.response :logger                  # log requests to STDOUT
   faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
 end
 
@@ -61,7 +60,8 @@ def test(obj)
     all_requests += obj[:stubs] if obj.has_key?(:stubs)
 
     all_requests.each do |req|
-      absolute_url = URI.join(GH_URL, req[:url])
+      url_to_use =req[:regexp] && req[:test] ? req[:test] : req[:url]
+      absolute_url = URI.join(GH_URL, url_to_use)
       method = req[:method] || "get"
       output += <<-eos
   it("should stub [#{method}] #{absolute_url}", function()
@@ -136,7 +136,11 @@ ghobjects = {
         :url => "/users/#{GH_USER}/repos?per_page=3"
       },
       :stubs => [
-        { :url => "/users/#{GH_USER}/repos" } # THIS SHOULD BE A REGEXP STUBBING ALL PARAMETERS OF THIS CALL
+        {
+          :url => "\/users\/#{GH_USER}\/repos\?",
+          :regexp => true,
+          :test => "/users/#{GH_USER}/repos?does=this&regexp=work"
+        }
       ]
     },
     :org_index => {
@@ -144,7 +148,10 @@ ghobjects = {
         :url => "/orgs/#{GH_ORG}/repos?per_page=3"
       },
       :stubs => [
-        { :url => "/orgs/#{GH_ORG}/repos" } # THIS SHOULD BE A REGEXP STUBBING ALL PARAMETERS OF THIS CALL
+        {
+          :url => "\/orgs\/#{GH_ORG}\/repos\?",
+          :regexp => true
+        }
       ]
     },
     :show => {

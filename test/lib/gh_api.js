@@ -50,7 +50,7 @@ var GHAPI = {
 
       for(var i = 0; i < all_requests.length; i++)
       {
-        this.fakeRequest(all_requests[i].method || "get", all_requests[i].url, obj.response);
+        this.fakeRequest(all_requests[i], obj.response);
       }
     }
     else
@@ -66,18 +66,28 @@ var GHAPI = {
     this.server.respond();
   },
 
-  fakeRequest : function(method, path, responseBody, responseCode, responseHeaders)
+  fakeRequest : function(request, response, responseCode, responseHeaders)
   {
     if(!responseCode) responseCode = 200;
     if(!responseHeaders) responseHeaders = {};
+    var method = request.method || "get";
+    var abs_url;
+    if(request.regexp)
+    {
+      abs_url = new RegExp(request.url);
+    }
+    else
+    {
+      abs_url = this.url(request.url);
+    }
 
-    //console.log("Faking: [" + method + "] " + path + " with:");
+    //console.log("Faking: [" + method + "] " + abs_url + " with:");
     //console.log(response);
 
-    this.server.respondWith(method, this.url(path), [
+    this.server.respondWith(method, abs_url, [
       responseCode,
       responseHeaders,
-      JSON.stringify(responseBody)
+      JSON.stringify(response)
     ]);
   },
 
