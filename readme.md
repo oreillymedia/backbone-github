@@ -83,7 +83,7 @@ u.organizations({
 
 ### GitHub.Organization
 
-You cna fetch an organization by name via the `GitHub.Organization.fetch` callback. The second parameter is an options object that takes a `success` and `error` callback.
+You can fetch an organization by name via the `GitHub.Organization.fetch` callback. The second parameter is an options object that takes a `success` and `error` callback.
 
 ```javascript
 GitHub.Organization.fetch('myuser', {
