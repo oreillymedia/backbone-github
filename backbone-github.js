@@ -474,7 +474,6 @@ GitHub.Repo = GitHub.Model.extend({
     if (!options){
       var options = {};
     }
-
     if(options.encode === false)
       var content = file_content;
     else

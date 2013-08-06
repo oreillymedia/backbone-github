@@ -202,7 +202,7 @@ describe('Github.repo.create_file', function(){
         error: function(e){console.log(e);}
     });
     GHAPI.respond();
-    file_content = "bye bye"
+    file_content = "bye bye";
     result.cook(file_content); //need to base64
     result.save();
     expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/atlasservers/basic-sample/contents/subfolder/SUBME.md?ref=master"));
@@ -212,3 +212,30 @@ describe('Github.repo.create_file', function(){
   });
 
 });
+
+
+describe('Github.repo.update_file', function(){
+
+  var r;
+
+    beforeEach(function() {
+      GHAPI.fake(true);
+      r = Helpers.get_repo();
+    });
+
+    afterEach(function() {
+      GHAPI.unfake();
+    });
+
+    it("should not screw up the model of the file it is being passed to update", function()
+    {
+      // This should be failing, based on what's happening with the real api...
+      var file;
+      r.contents("master", "README.md", {
+        success : function(o) { file = o; }
+      });
+      GHAPI.respond();
+      r.update_file("master", "README.md", 'This is tricky, yo.', 'updated README.md', file);
+      expect(file.raw()).toEqual('This is tricky, yo.');
+    });
+  });
