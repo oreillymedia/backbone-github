@@ -11,7 +11,7 @@ describe("Tree", function() {
     }).length);
     expect(tree.blobs.length).toBe(_.filter(GHObjects.trees.show.response, function(obj) {
       return obj.type == "blob"
-    }).length))
+    }).length)
 	});
 
   it("should use url attribute if it has one", function()
@@ -29,10 +29,10 @@ describe("Tree", function() {
     GHAPI.respond();
     expect(tree.trees.length).toBe(_.filter(GHObjects.trees.show.response, function(obj) {
       return obj.type == "tree"
-    }).length))
+    }).length);
     expect(tree.blobs.length).toBe(_.filter(GHObjects.trees.show.response, function(obj) {
       return obj.type == "blob"
-    }).length))
+    }).length);
     GHAPI.unfake();
   });
 

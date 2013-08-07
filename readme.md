@@ -1,5 +1,8 @@
 # Backbone GitHub
 
+## Warning
+`test/lib/gh_api_make.rb` is not currently idempotent. You must delete whatever [GH_RENAME_TO](https://github.com/atlasservers/new-name-for-test-repo) is set to manually before running it again.
+
 NB: This library has added ton of features since we wrote this README. Please see test coverage for features.
 
 Backbone GitHub is a 100% client-side Javascript library for accessing the GitHub API using Cross Origin Resource Sharing.

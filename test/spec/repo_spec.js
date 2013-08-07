@@ -241,11 +241,8 @@ describe('Github.repo.update_file', function(){
 
 describe('Github.repo.rename', function(){
 
-  // var r;
-
     beforeEach(function() {
       GHAPI.fake(true);
-      // r = Helpers.get_repo();
     });
 
     afterEach(function() {
@@ -254,9 +251,10 @@ describe('Github.repo.rename', function(){
 
     it("should call the correct URL and method", function()
     {
-      var r = new GitHub.Repo({url:GHAPI.url("/repos/oreillymedia/test-repo")});
+      //to not fake it, use the token, ie: GitHub.token = 'bla bla'
+      var r = new GitHub.Repo({url:GHAPI.url("/repos/atlasservers/test-repo")});
       r.rename('new-name-for-test-repo');
       expect(GHAPI.lastRequest().method).toEqual("PATCH");
-      expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/oreillymedia/test-repo"));
+      expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/atlasservers/test-repo"));
     });
   });

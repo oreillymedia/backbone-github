@@ -26,6 +26,7 @@ GH_USER = "atlasservers"
 GH_ORG = "oreillymedia"
 GH_REPO = "basic-sample"
 GH_REPO_TO_FORK = 'test-repo'
+GH_RENAME_TO = 'new-name-for-test-repo'
 
 @conn = Faraday.new(:url => GH_URL) do |faraday|
   faraday.use     FaradayMiddleware::EncodeJson
@@ -38,6 +39,7 @@ end
 # ---------------------------------------------------------------------------
 
 def call(req)
+  sleep(1)
   puts "Calling #{req[:url]}"
   response = @conn.send(req[:method] || "get") do |fara|
     fara.url req[:url]
@@ -175,6 +177,25 @@ ghobjects = {
       }
     }
   },
+  :edit => {
+    :rename => {
+      :request => {
+        :url => "/repos/#{GH_USER}/#{GH_REPO_TO_FORK}",
+        :method => 'patch',
+        :options => {
+          :name => GH_RENAME_TO
+        }
+      }
+    }
+  },
+  # :kill => {
+  #   :delete => {
+  #     :request => {
+  #       :url => "/repos/#{GH_USER}/#{GH_RENAME_TO}",
+  #       :method => 'delete'
+  #     }
+  #   }
+  # },
   :branches => {
     :index => {
       :request => {

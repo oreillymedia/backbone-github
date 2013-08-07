@@ -492,8 +492,10 @@ GitHub.Repo = GitHub.Model.extend({
   },
   rename: function(new_name)
   {
-    console.log('rename called');
-    this.save({name: new_name, id: new_name}, {patch: true});
+    var t = this;
+    this.set({name: new_name, id:new_name})
+    // TODO: success and error callbacks aren't working testably because the OPTIONS method is being used before PATCH.
+    this.save({name: new_name}, {patch: true});
   },
 
   collaborators : function(options)
