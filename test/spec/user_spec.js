@@ -29,6 +29,13 @@ describe("currentUser", function() {
   	expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/user/orgs"));
 	});
 
+  it("should call correct URLs and methods in user.fork()", function()
+  {
+    GitHub.currentUser.fork('oreillymedia/test-repo');
+    expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/oreillymedia/test-repo/forks"));
+    expect(GHAPI.lastRequest().method).toEqual("POST");
+  });
+
 });
 
 /* GitHub.User

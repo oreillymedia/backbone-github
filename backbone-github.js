@@ -221,7 +221,14 @@ GitHub.Relations = {
 GitHub.User = GitHub.Model.extend({
   url : function() { return GitHub.url + "/users/" + this.get("login") },
   repos: GitHub.Relations.ownedRepos,
-  organizations: GitHub.Relations.ownedOrgs
+  organizations: GitHub.Relations.ownedOrgs,
+  fork: function(repo_name){
+    var repo = new GitHub.Repo();
+    repo.set('url', GitHub.url+'/repos/'+repo_name+'/forks');
+    repo.save();
+    return repo;
+  },
+
 },
 {
   fetch: function(login, options) {
@@ -482,6 +489,11 @@ GitHub.Repo = GitHub.Model.extend({
     data = {branch:branch, repo:this, content: content, path: path, sha:model.get('sha'), message: message, id: model.cid}
     model.save(data, options);
     return model;
+  },
+  rename: function(new_name)
+  {
+    console.log('rename called');
+    this.save({name: new_name, id: new_name}, {patch: true});
   },
 
   collaborators : function(options)

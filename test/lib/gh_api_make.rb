@@ -25,6 +25,7 @@ GH_URL = "https://api.github.com"
 GH_USER = "atlasservers"
 GH_ORG = "oreillymedia"
 GH_REPO = "basic-sample"
+GH_REPO_TO_FORK = 'test-repo'
 
 @conn = Faraday.new(:url => GH_URL) do |faraday|
   faraday.use     FaradayMiddleware::EncodeJson
@@ -164,6 +165,13 @@ ghobjects = {
     :show => {
       :request => {
         :url => "/repos/#{GH_USER}/#{GH_REPO}"
+      }
+    }
+  },
+  :forks => {
+    :create => {
+      :request => {
+        :url => "/repos/#{GH_ORG}/#{GH_REPO_TO_FORK}/forks", :method => 'post'
       }
     }
   },

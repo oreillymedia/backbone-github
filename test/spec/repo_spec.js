@@ -213,7 +213,6 @@ describe('Github.repo.create_file', function(){
 
 });
 
-
 describe('Github.repo.update_file', function(){
 
   var r;
@@ -237,5 +236,27 @@ describe('Github.repo.update_file', function(){
       GHAPI.respond();
       r.update_file("master", "README.md", 'This is tricky, yo.', 'updated README.md', file);
       expect(file.raw()).toEqual('This is tricky, yo.');
+    });
+  });
+
+describe('Github.repo.rename', function(){
+
+  // var r;
+
+    beforeEach(function() {
+      GHAPI.fake(true);
+      // r = Helpers.get_repo();
+    });
+
+    afterEach(function() {
+      GHAPI.unfake();
+    });
+
+    it("should call the correct URL and method", function()
+    {
+      var r = new GitHub.Repo({url:GHAPI.url("/repos/oreillymedia/test-repo")});
+      r.rename('new-name-for-test-repo');
+      expect(GHAPI.lastRequest().method).toEqual("PATCH");
+      expect(GHAPI.lastRequest().url).toEqual(GHAPI.url("/repos/oreillymedia/test-repo"));
     });
   });
